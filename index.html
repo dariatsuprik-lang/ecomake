@@ -1,867 +1,474 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecomake · Стратегия выхода на рынки СНГ 2026–2027</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#2a2420;--ink-l:#5a4f48;--ink-f:#9a8f88;
-  --bg:#faf7f3;--bg-w:#f4ede4;--bg-c:#ffffff;
-  --acc:#8a6f5a;--acc-l:#c4a896;--acc-p:#ede4dc;
-  --gold:#b8965a;--gld-p:#fef3e2;
-  --grn:#4e7a5a;--grn-p:#e8f0e8;
-  --red:#8a3a2e;--red-p:#f5ebe8;
-  --brd:#e2d8d0;--sh:0 2px 20px rgba(42,36,32,.08);--sh-lg:0 8px 48px rgba(42,36,32,.12);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+<!-- saved from url=(0060)file:///Users/apple/Downloads/cosmetics-tracker-index_1.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-/* COVER */
-.cover{min-height:100vh;background:var(--bg-w);display:flex;flex-direction:column;justify-content:space-between;padding:64px 80px;position:relative;overflow:hidden}
-.cover::before{content:'';position:absolute;top:-120px;right:-120px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(138,111,90,.13) 0%,transparent 70%);pointer-events:none}
-.cover::after{content:'';position:absolute;bottom:-80px;left:200px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(184,150,90,.08) 0%,transparent 70%);pointer-events:none}
-.cover-badge{display:inline-flex;align-items:center;gap:10px;color:var(--acc);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase}
-.cover-badge::before{content:'';width:32px;height:1px;background:var(--acc-l)}
-.cover-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:6px;text-transform:lowercase;color:var(--ink);margin-bottom:64px}
-.cover-title{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;line-height:1.05;color:var(--ink);margin-bottom:32px;letter-spacing:-0.5px}
-.cover-title em{font-style:italic;color:var(--acc)}
-.cover-subtitle{font-size:15px;font-weight:300;color:var(--ink-l);max-width:520px;line-height:1.7}
-.cover-meta{display:flex;gap:56px;position:relative;z-index:1;align-items:flex-end}
-.cover-stat-value{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--ink);line-height:1}
-.cover-stat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-f);margin-top:6px}
-.cover-divider{width:1px;background:var(--brd);height:60px}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Трекер запуска новинки</title>
+<link href="./Трекер запуска новинки ECOMAKE _files/css2" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:#F7F4F0;color:#1A1410;min-height:100vh}
+.app{display:flex;flex-direction:column;min-height:100vh}
+
+/* TOPBAR */
+.topbar{background:#7A4E3E;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;height:54px;flex-shrink:0}
+.logo{color:#fff;font-size:15px;font-weight:600}
+.logo span{opacity:.6;font-weight:400;font-size:13px;margin-left:8px}
+.tprog{display:flex;align-items:center;gap:8px;margin-left:auto}
+.tprog-bar{width:100px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden}
+.tprog-fill{height:100%;border-radius:2px;background:#fff;transition:width .3s}
+.tprog-lbl{color:rgba(255,255,255,.85);font-size:12px;min-width:28px}
 
 /* LAYOUT */
-.page{max-width:1100px;margin:0 auto;padding:80px 48px}
-.section{margin-bottom:96px}
-.section-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:12px}
-.section-label::after{content:'';flex:1;max-width:48px;height:1px;background:var(--acc-l)}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:40px}
-.section-title em{font-style:italic;color:var(--acc)}
-.card{background:var(--bg-c);border-radius:16px;padding:40px;box-shadow:var(--sh);border:1px solid var(--brd)}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.body{display:flex;flex:1;overflow:hidden}
 
-/* CONTEXT */
-.context-block{background:var(--ink);border-radius:20px;padding:56px 64px;display:grid;grid-template-columns:1fr 1fr;gap:64px;position:relative;overflow:hidden}
-.context-block::before{content:'';position:absolute;top:0;right:0;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(138,111,90,.12) 0%,transparent 70%)}
-.context-text h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:#fff;margin-bottom:20px}
-.context-text p{color:rgba(255,255,255,.6);line-height:1.75;font-size:14px;margin-bottom:12px}
-.context-kpi{display:flex;flex-direction:column;gap:24px;justify-content:center}
-.kpi-value{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:#fff;line-height:1}
-.kpi-label{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px;line-height:1.5}
-.kpi-div{height:1px;background:rgba(255,255,255,.1)}
+/* SIDEBAR */
+.sidebar{width:210px;flex-shrink:0;background:#fff;border-right:1px solid #E8E0D8;overflow-y:auto}
+.sidebar-hdr{font-size:10px;font-weight:600;color:#9E9188;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px 8px}
+.pbtn{width:100%;text-align:left;padding:9px 16px;border:none;background:none;cursor:pointer;display:flex;align-items:center;gap:9px;transition:background .1s}
+.pbtn:hover{background:#F7F4F0}
+.pbtn.active{background:#FEF3E8;border-left:3px solid #C8956C}
+.pbtn.active .pnum{background:#C8956C;color:#fff}
+.pnum{width:22px;height:22px;border-radius:50%;background:#F0EBE4;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#7A5040;flex-shrink:0}
+.pinfo{flex:1;min-width:0}
+.pname{font-size:12.5px;font-weight:500;color:#1A1410;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdays{font-size:11px;color:#9E9188;margin-top:1px}
+.ppct{font-size:11px;color:#9E9188;flex-shrink:0}
+.pminibar{height:2px;margin:0 16px 6px;border-radius:1px;background:#EDE8E0;overflow:hidden}
+.pminifill{height:100%;background:#4E9462;transition:width .3s}
 
-/* PRODUCT GRID */
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.product-card{background:var(--bg-c);border-radius:14px;padding:28px 24px;border:1px solid var(--brd);transition:transform .2s,box-shadow .2s}
-.product-card:hover{transform:translateY(-3px);box-shadow:var(--sh-lg)}
-.product-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px}
-.product-name{font-weight:600;font-size:13px;color:var(--ink);margin-bottom:6px;line-height:1.3;text-align:center}
-.product-meta{font-size:12px;color:var(--ink-f);margin-bottom:12px;line-height:1.5;text-align:center}
-.product-price-row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--brd);padding-top:12px;margin-top:4px}
-.product-cost{font-size:12px;color:var(--ink-f)}
-.product-rrz{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--acc);font-weight:400}
-.product-moq{font-size:11px;color:var(--ink-f);margin-top:4px}
-.product-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;justify-content:center}
-.product-tag{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;letter-spacing:.5px}
-.tag-kz{background:#e8eef8;color:#3a5a9a}.tag-uz{background:#f0e8f8;color:#5a3a8a}
-.tag-kg{background:var(--grn-p);color:var(--grn)}.tag-by{background:var(--red-p);color:var(--red)}
-.tag-d2c{background:var(--ink);color:#fff}.tag-mp{background:var(--acc-p);color:var(--acc)}
-.tag-all{background:var(--gld-p);color:var(--gold)}
+/* CONTENT */
+.content{flex:1;overflow-y:auto;padding:1.5rem}
 
-/* POSITIONING */
-.positioning-matrix{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.pos-card{border-radius:16px;padding:36px;position:relative;overflow:hidden}
-.pos-base{background:var(--bg-w);border:1px solid var(--brd)}
-.pos-premium{background:var(--ink)}
-.pos-card h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:8px;color:var(--ink)}
-.pos-premium h3{color:#fff}
-.pos-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-f);margin-bottom:24px}
-.pos-premium .pos-sub{color:rgba(255,255,255,.4)}
-.pos-price{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1;color:var(--acc);margin-bottom:6px}
-.pos-premium .pos-price{color:var(--acc-l)}
-.pos-price-sub{font-size:13px;color:var(--ink-f);margin-bottom:28px}
-.pos-premium .pos-price-sub{color:rgba(255,255,255,.4)}
-.pos-list{list-style:none}
-.pos-list li{font-size:13px;padding:7px 0;border-bottom:1px solid var(--brd);color:var(--ink-l);display:flex;gap:10px;align-items:flex-start}
-.pos-premium .pos-list li{border-bottom-color:rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
-.pos-list li:last-child{border-bottom:none}
-.pos-list li::before{content:'—';opacity:.35;flex-shrink:0}
-.pos-gold-accent{position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(184,150,90,.15) 0%,transparent 70%)}
+/* PHASE HEADER */
+.ph{margin-bottom:1.25rem}
+.ph-top{display:flex;align-items:baseline;flex-wrap:wrap;gap:.75rem;margin-bottom:.5rem}
+.ph-title{font-size:20px;font-weight:600}
+.ph-badge{font-size:12px;color:#7A5040;background:#FEF3E8;border:1px solid #E8C8A8;padding:3px 10px;border-radius:100px}
+.ph-desc{font-size:13px;color:#6B5F52;line-height:1.6;margin-bottom:.75rem}
+.team-lbl{font-size:10px;font-weight:600;color:#9E9188;text-transform:uppercase;letter-spacing:.7px;margin-bottom:.4rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.875rem}
+.chip{font-size:12px;padding:3px 10px;border-radius:100px;border:1px solid #E0D8CF;color:#6B5F52}
+.chip.lead{background:#FEF3E8;border-color:#C8956C;color:#7A4E3E;font-weight:500}
+.phbar-row{display:flex;align-items:center;gap:.75rem}
+.phbar{flex:1;height:5px;border-radius:3px;background:#E8E0D8;overflow:hidden}
+.phfill{height:100%;border-radius:3px;background:#4E9462;transition:width .3s}
+.phlbl{font-size:12.5px;color:#6B5F52;font-weight:500;min-width:36px;text-align:right}
 
-/* TABLE */
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-thead tr{background:var(--ink);color:#fff}
-thead th{padding:14px 18px;text-align:left;font-weight:500;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
-thead th:first-child{border-radius:10px 0 0 0}thead th:last-child{border-radius:0 10px 0 0}
-tbody tr{border-bottom:1px solid var(--brd);transition:background .2s}
-tbody tr:hover{background:var(--bg-w)}
-tbody tr:last-child{border-bottom:none}
-td{padding:14px 18px;color:var(--ink-l);vertical-align:top}
-td:first-child{color:var(--ink);font-weight:500}
-.table-wrap{background:var(--bg-c);border-radius:16px;overflow:hidden;box-shadow:var(--sh);border:1px solid var(--brd)}
-.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px;white-space:nowrap}
-.badge-y{background:var(--grn-p);color:var(--grn)}.badge-n{background:var(--red-p);color:var(--red)}
-.badge-w{background:var(--gld-p);color:#9a6a20}.badge-neu{background:var(--acc-p);color:var(--acc)}
+/* BLOCKS */
+.block{background:#fff;border:1px solid #E8E0D8;border-radius:10px;margin-bottom:.75rem;overflow:hidden}
+.bhdr{padding:11px 15px;display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;transition:background .1s}
+.bhdr:hover{background:#FAFAF8}
+.bdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.bname{font-size:13.5px;font-weight:500;flex:1}
+.bcnt{font-size:12px;color:#9E9188}
+.bchev{font-size:18px;color:#9E9188;transition:transform .2s;line-height:1}
+.bchev.open{transform:rotate(180deg)}
 
-/* ROADMAP PHASES */
-.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:40px}
-.phase-card{border-radius:16px;padding:28px 24px;border:1px solid var(--brd)}
-.ph1{background:var(--bg-w)}.ph2{background:var(--grn-p)}.ph3{background:var(--gld-p)}.ph4{background:var(--acc-p)}
-.phase-num{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
-.ph1 .phase-num{color:var(--acc)}.ph2 .phase-num{color:var(--grn)}.ph3 .phase-num{color:var(--gold)}.ph4 .phase-num{color:var(--acc)}
-.phase-period{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink);margin-bottom:14px}
-.phase-items{list-style:none}
-.phase-items li{font-size:12.5px;color:var(--ink-l);padding:4px 0 4px 14px;position:relative;line-height:1.5}
-.phase-items li::before{content:'—';position:absolute;left:0;opacity:.4}
-.phase-items li strong{color:var(--ink);font-weight:600}
+/* TASKS */
+.bbody{border-top:1px solid #EDE8E0}
+.task{padding:10px 15px;border-bottom:1px solid #F0EBE4}
+.task:last-child{border-bottom:none}
+.tmain{display:flex;align-items:flex-start;gap:9px}
+.cb{width:18px;height:18px;border-radius:4px;border:1.5px solid #CCC4BC;cursor:pointer;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;background:#fff;transition:all .15s}
+.cb:hover{border-color:#C8956C}
+.cb.done{background:#4E9462;border-color:#4E9462}
+.cb.done::after{content:'';display:block;width:9px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(0,-1px)}
+.tbody{flex:1;min-width:0}
+.ttext{font-size:13px;color:#1A1410;line-height:1.5}
+.ttext.done{text-decoration:line-through;color:#9E9188}
+.tdetail{font-size:11.5px;color:#9E9188;margin-top:3px;line-height:1.55}
+.tfooter{margin-top:7px;margin-left:27px}
+.cbtn{font-size:12px;color:#9E9188;background:none;border:none;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:4px;transition:color .1s}
+.cbtn:hover{color:#1A1410}
+.cbtn.has{color:#C8956C}
+.cwrap{margin-top:6px}
+.cwrap textarea{width:100%;font-size:12px;padding:7px 10px;border:1px solid #E0D8CF;border-radius:6px;background:#FAFAF8;color:#1A1410;resize:vertical;font-family:inherit;min-height:56px;line-height:1.5;transition:border .15s}
+.cwrap textarea:focus{outline:none;border-color:#C8956C;background:#fff}
 
-/* ─── GANTT ─── */
-.gantt-wrap{background:var(--bg-c);border-radius:20px;padding:40px;box-shadow:var(--sh);border:1px solid var(--brd);overflow-x:auto}
-.gantt-title-row{display:flex;margin-bottom:20px;padding-left:220px;gap:0}
-.gantt-month{flex:1;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f);min-width:72px}
-.gantt-month.now{color:var(--acc)}
-.gantt-row{display:flex;align-items:center;margin-bottom:10px;min-height:44px}
-.gantt-label{width:220px;flex-shrink:0;padding-right:16px}
-.gantt-label-group{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--acc);margin-bottom:2px}
-.gantt-label-name{font-size:12.5px;color:var(--ink);font-weight:500;line-height:1.3}
-.gantt-cells{display:flex;flex:1;gap:0;min-height:40px;align-items:center}
-.gantt-cell{flex:1;min-width:72px;height:40px;position:relative}
-.gantt-bar{position:absolute;top:8px;bottom:8px;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;letter-spacing:.3px}
-.gantt-bar-orange{background:linear-gradient(90deg,#c47a3a,#d4924a)}
-.gantt-bar-green{background:linear-gradient(90deg,#4e7a5a,#6a9a72)}
-.gantt-bar-blue{background:linear-gradient(90deg,#3a5a8a,#4a6a9a)}
-.gantt-bar-purple{background:linear-gradient(90deg,#6a3a8a,#8a5aaa)}
-.gantt-bar-gold{background:linear-gradient(90deg,#a07830,#c09840)}
-.gantt-bar-dark{background:linear-gradient(90deg,#2a2420,#3a342e)}
-.gantt-bar-teal{background:linear-gradient(90deg,#2a6a6a,#3a8a8a)}
-.gantt-sep{height:1px;background:var(--brd);margin:12px 0 12px 220px}
-.now-line{position:absolute;top:0;bottom:0;left:0;width:2px;background:rgba(138,111,90,.3);z-index:5}
+/* STATS */
+.statsbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:1rem 1.5rem;background:#fff;border-top:1px solid #E8E0D8;flex-shrink:0}
+.stat{background:#F7F4F0;border-radius:8px;padding:10px 14px}
+.snum{font-size:22px;font-weight:600;color:#1A1410}
+.slbl{font-size:11px;color:#9E9188;margin-top:1px}
 
-/* PARTNER MAP */
-.partner-country{background:var(--bg-c);border-radius:16px;overflow:hidden;box-shadow:var(--sh);border:1px solid var(--brd);margin-bottom:20px}
-.partner-country-header{display:flex;align-items:center;gap:16px;padding:20px 28px;background:var(--bg-w);border-bottom:1px solid var(--brd)}
-.country-flag{font-size:24px}
-.country-info h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink)}
-.country-info span{font-size:12px;color:var(--ink-f)}
-.country-priority{margin-left:auto;padding:4px 16px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
-.pr-1{background:var(--ink);color:#fff}.pr-2{background:var(--acc-p);color:var(--acc)}
-.pr-3{background:var(--grn-p);color:var(--grn)}.pr-r{background:var(--red-p);color:var(--red)}.pr-t{background:var(--gld-p);color:var(--gold)}
-.partner-list{display:grid;grid-template-columns:repeat(3,1fr)}
-.partner-item{padding:20px 28px;border-right:1px solid var(--brd);border-bottom:1px solid var(--brd)}
-.partner-item:nth-child(3n){border-right:none}
-.partner-item:nth-last-child(-n+3){border-bottom:none}
-.partner-step{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
-.partner-name{font-weight:600;font-size:14px;color:var(--ink);margin-bottom:6px}
-.partner-desc{font-size:12.5px;color:var(--ink-l);line-height:1.55}
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:#4E9462;color:#fff;font-size:13px;padding:8px 16px;border-radius:6px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
 
-/* RESPONSIBILITY */
-.resp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.resp-card{border-radius:16px;padding:36px;border:1px solid var(--brd)}
-.resp-brand{background:var(--bg-w)}.resp-partner{background:var(--bg-c)}
-.resp-card h4{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:6px}
-.resp-card .sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-f);margin-bottom:24px}
-.resp-item{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--brd);align-items:flex-start}
-.resp-item:last-child{border-bottom:none}
-.resp-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:var(--acc-p)}
-.resp-text{font-size:13.5px;color:var(--ink-l);line-height:1.5}
-.resp-text strong{color:var(--ink);font-weight:600}
-
-/* SUPPORT */
-.support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.support-card{border-radius:16px;padding:32px 28px;border:1px solid var(--brd);background:var(--bg-c);box-shadow:var(--sh)}
-.support-card h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:6px}
-.support-card .support-org{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f);margin-bottom:16px}
-.support-card ul{list-style:none}
-.support-card ul li{font-size:13px;color:var(--ink-l);padding:5px 0 5px 14px;position:relative}
-.support-card ul li::before{content:'→';position:absolute;left:0;color:var(--acc);font-size:11px}
-
-/* NOTES */
-.note{border-left:3px solid var(--acc);padding:18px 24px;background:var(--acc-p);border-radius:0 12px 12px 0;font-size:13.5px;color:var(--ink-l);margin-top:24px;line-height:1.65}
-.note strong{color:var(--ink)}
-.note-warn{border-left-color:var(--gold);background:var(--gld-p)}
-.note-grn{border-left-color:var(--grn);background:var(--grn-p)}
-
-/* COMPETITION */
-.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.comp-card{border-radius:14px;padding:28px 24px;border:1px solid var(--brd);background:var(--bg-c)}
-.comp-card h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:4px}
-.comp-flag{font-size:20px;margin-bottom:10px}
-.comp-row{margin-top:12px;padding-top:12px;border-top:1px solid var(--brd)}
-.comp-row-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink-f);margin-bottom:4px}
-.comp-row-text{font-size:13px;color:var(--ink-l);line-height:1.5}
-.comp-row-text.highlight{color:var(--ink);font-weight:600}
-
-/* FOOTER */
-.footer{background:var(--ink);padding:48px 80px;display:flex;justify-content:space-between;align-items:center}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:5px;color:rgba(255,255,255,.5);text-transform:lowercase}
-.footer-meta{font-size:12px;color:rgba(255,255,255,.3);text-align:right}
+@media(max-width:620px){
+  .sidebar{display:none}
+  .statsbar{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
 <body>
-
-<!-- ═══ ОБЛОЖКА ═══ -->
-<div class="cover">
-  <div>
-    <div class="cover-logo">ecomake</div>
-    <div class="cover-badge">Стратегический документ · Июнь 2026</div>
+<div class="app">
+  <div class="topbar">
+    <div class="logo">🚀 Трекер запуска новинки<span>Косметика · Китай → Россия</span></div>
+    <div class="tprog">
+      <div class="tprog-bar"><div class="tprog-fill" id="tfill" style="width: 0%;"></div></div>
+      <div class="tprog-lbl" id="tpct">0%</div>
+    </div>
   </div>
-  <div style="position:relative;z-index:1">
-    <div class="cover-title">Стратегия выхода<br>на <em>рынки СНГ</em><br>2026–2027</div>
-    <div class="cover-subtitle">Масштабирование через маркетплейсы и партнёрскую сеть дистрибуции в Казахстане, Узбекистане, Кыргызстане, Беларуси и за их пределами. Горизонт планирования: 18 месяцев.</div>
+  <div class="body">
+    <div class="sidebar">
+      <div class="sidebar-hdr">Этапы проекта</div>
+      <div id="sidebar"><button class="pbtn" onclick="go(0)"><div class="pnum">1</div><div class="pinfo"><div class="pname">Аналитика и концепт</div><div class="pdays">Дни 1–13</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(1)"><div class="pnum">2</div><div class="pinfo"><div class="pname">Поставщик и договор</div><div class="pdays">Дни 11–47</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(2)"><div class="pnum">3</div><div class="pinfo"><div class="pname">Дизайн упаковки</div><div class="pdays">Дни 37–66</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(3)"><div class="pnum">4</div><div class="pinfo"><div class="pname">Технология и образцы</div><div class="pdays">Дни 44–78</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(4)"><div class="pnum">5</div><div class="pinfo"><div class="pname">Сертификация</div><div class="pdays">Дни 44–108</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(5)"><div class="pnum">6</div><div class="pinfo"><div class="pname">Производство и QC</div><div class="pdays">Дни 78–128</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(6)"><div class="pnum">7</div><div class="pinfo"><div class="pname">Контент для МП</div><div class="pdays">Дни 100–130</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(7)"><div class="pnum">8</div><div class="pinfo"><div class="pname">Логистика и таможня</div><div class="pdays">Дни 116–163</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn active" onclick="go(8)"><div class="pnum">9</div><div class="pinfo"><div class="pname">Финансы и запуск</div><div class="pdays">Дни 100+</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div></div>
+    </div>
+    <div class="content" id="content"><div class="ph"><div class="ph-top"><div class="ph-title">Этап 9. Финансы и запуск</div><div class="ph-badge">Дни 100+</div></div><div class="ph-desc">Финальный расчёт экономики, бюджет маркетинга, размещение на маркетплейсах, старт продаж и мониторинг результатов.</div><div class="team-lbl">Участники этапа</div><div class="chips"><span class="chip lead">Руководитель продуктовой разработки</span><span class="chip">Продакт-менеджер</span><span class="chip">Финансовый менеджер</span><span class="chip">Маркетолог МП</span><span class="chip">Менеджер МП</span></div><div class="phbar-row"><div class="phbar"><div class="phfill" style="width:0%"></div></div><div class="phlbl">0/14</div></div></div><div class="block"><div class="bhdr" onclick="toggleB(&#39;b_fin&#39;)"><div class="bdot" style="background:#B89A30"></div><div class="bname">Финансовое планирование</div><div class="bcnt">0/5</div><div class="bchev open">⌄</div></div><div class="bbody"><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t93&#39;)"></div><div class="tbody"><div class="ttext">Финальный расчёт Unit-экономики (реальные цифры)</div><div class="tdetail">Landed cost + комиссии МП + логистика МП + % выкупа</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t93&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t94&#39;)"></div><div class="tbody"><div class="ttext">Проверка: маржа ≥ 25% — иначе пересматриваем цену</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t94&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t95&#39;)"></div><div class="tbody"><div class="ttext">Рассчитать бюджет маркетинга на старт</div><div class="tdetail">Выкупы 50–100 шт. + отзывы 30 шт. + реклама МП</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t95&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t96&#39;)"></div><div class="tbody"><div class="ttext">Платёжный календарь + точка безубыточности</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t96&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t97&#39;)"></div><div class="tbody"><div class="ttext">Резервный бюджет +15% на непредвиденные расходы</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t97&#39;)">💬 добавить комментарий</button></div></div></div></div><div class="block"><div class="bhdr" onclick="toggleB(&#39;b_mp&#39;)"><div class="bdot" style="background:#C06090"></div><div class="bname">Размещение на маркетплейсах</div><div class="bcnt">0/4</div><div class="bchev open">⌄</div></div><div class="bbody"><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t98&#39;)"></div><div class="tbody"><div class="ttext">Создать карточки товара Ozon + Wildberries</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t98&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t99&#39;)"></div><div class="tbody"><div class="ttext">Загрузить контент, характеристики, EAN-13, DataMatrix</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t99&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t100&#39;)"></div><div class="tbody"><div class="ttext">Загрузить декларацию соответствия / СГР в ЛК МП</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t100&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t101&#39;)"></div><div class="tbody"><div class="ttext">Подключить FBS, загрузить остатки на собственном складе</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t101&#39;)">💬 добавить комментарий</button></div></div></div></div><div class="block"><div class="bhdr" onclick="toggleB(&#39;b_launch&#39;)"><div class="bdot" style="background:#4E9462"></div><div class="bname">Старт продаж</div><div class="bcnt">0/5</div><div class="bchev open">⌄</div></div><div class="bbody"><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t102&#39;)"></div><div class="tbody"><div class="ttext">Запустить внутреннюю рекламу МП в первый день продаж</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t102&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t103&#39;)"></div><div class="tbody"><div class="ttext">Организовать выкупы 50–100 шт. для подъёма рейтинга</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t103&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t104&#39;)"></div><div class="tbody"><div class="ttext">Запустить посевы в Telegram beauty-каналах + инфлюенсеры</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t104&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t105&#39;)"></div><div class="tbody"><div class="ttext">Мониторинг 28 дней: продажи, конверсия, ДРР, отзывы</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t105&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t106&#39;)"></div><div class="tbody"><div class="ttext">Решение: масштабировать → FBO или корректировать продукт</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t106&#39;)">💬 добавить комментарий</button></div></div></div></div></div>
   </div>
-  <div class="cover-meta">
-    <div><div class="cover-stat-value">5</div><div class="cover-stat-label">Целевых рынков</div></div>
-    <div class="cover-divider"></div>
-    <div><div class="cover-stat-value">16 SKU</div><div class="cover-stat-label">Новинок к запуску</div></div>
-    <div class="cover-divider"></div>
-    <div><div class="cover-stat-value">14</div><div class="cover-stat-label">Партнёров в базе</div></div>
-    <div class="cover-divider"></div>
-    <div><div class="cover-stat-value">50/50</div><div class="cover-stat-label">Условия оплаты поставщику</div></div>
-  </div>
+  <div class="statsbar" id="statsbar"><div class="stat"><div class="snum">9</div><div class="slbl">этапов</div></div><div class="stat"><div class="snum">106</div><div class="slbl">задач всего</div></div><div class="stat"><div class="snum">0</div><div class="slbl">выполнено</div></div><div class="stat"><div class="snum">0%</div><div class="slbl">прогресс</div></div></div>
 </div>
+<div class="toast" id="toast">✓ Сохранено</div>
 
-<!-- ═══ СТРАНИЦЫ ═══ -->
-<div class="page">
+<script>
+var PHASES = [
+{id:"p1",label:"Аналитика и концепт",days:"Дни 1–13",
+ team:["Руководитель продуктовой разработки","Продакт-менеджер","Аналитик"],
+ desc:"Исследование рынка, выбор ниши и продуктового концепта, предварительный расчёт Unit-экономики.",
+ blocks:[
+  {id:"b_an",label:"Аналитика рынка",color:"#E8A04A",tasks:[
+    {id:"t1",text:"Анализ категории на МП — MPStats, Moneyplace, SellerFox",detail:"Объём ниши, топ-запросы, сезонность, ценовые кластеры на Ozon и WB"},
+    {id:"t2",text:"Выгрузка ТОП-100 SKU ниши и анализ бестселлеров",detail:"Продажи, отзывы, фото, состав, claims конкурентов"},
+    {id:"t3",text:"Тренды: Google Trends, TikTok, Pinterest, international beauty reports"},
+    {id:"t4",text:"Анализ ТОП-20 конкурентов по выбранной нише",detail:"Цена, состав, упаковка, claims, болевые точки в негативных отзывах"},
+    {id:"t5",text:"Решение: входим / не входим — зафиксировать и согласовать"}
+  ]},
+  {id:"b_con",label:"Концепт продукта",color:"#5B8DB8",tasks:[
+    {id:"t6",text:"Заполнить Product Brief",detail:"УТП, ЦА, ценовой сегмент, форм-фактор, базовый состав, позиционирование"},
+    {id:"t7",text:"Определить ценовой сегмент и предполагаемую цену продажи"},
+    {id:"t8",text:"Предварительный прогноз объёма продаж (шт/мес)"}
+  ]},
+  {id:"b_eco1",label:"Предварительная Unit-экономика",color:"#B89A30",tasks:[
+    {id:"t9",text:"Прогноз цены продажи, комиссий МП (15–25%), логистики"},
+    {id:"t10",text:"Предварительная себестоимость: FOB ориент. + таможня + фрахт"},
+    {id:"t11",text:"Проверка: маржа ≥ 25–30% — если нет, корректируем концепт"}
+  ]}
+ ]
+},
+{id:"p2",label:"Поставщик и договор",days:"Дни 11–47",
+ team:["Руководитель продуктовой разработки","Менеджер по закупкам","Юрист"],
+ desc:"Поиск и выбор китайского ODM-производителя, получение первичных образцов, подписание договора и предоплата.",
+ blocks:[
+  {id:"b_sup",label:"Поиск поставщика",color:"#5B8DB8",tasks:[
+    {id:"t12",text:"Составить шорт-лист 3–5 заводов",detail:"Alibaba, 1688, Canton Fair, рекомендации агентов"},
+    {id:"t13",text:"Проверить сертификаты: GMPC / ISO 22716 / SGS"},
+    {id:"t14",text:"Запросить каталог готовых ODM-формул + NDA"},
+    {id:"t15",text:"Отправить RFQ / Product Requirement Sheet каждому заводу",detail:"Цена FOB, MOQ, сроки, варианты формул и упаковки"}
+  ]},
+  {id:"b_samp",label:"Первичные образцы (ODM)",color:"#4E9462",tasks:[
+    {id:"t16",text:"Получить образцы готовых формул от заводов (DHL, 5–7 дней)"},
+    {id:"t17",text:"Оценить образцы: текстура, запах, цвет, нанесение",detail:"Заполнить scoring sheet по каждому образцу и заводу"},
+    {id:"t18",text:"Выбрать финальную формулу и форм-фактор"},
+    {id:"t19",text:"Выбрать финального поставщика"}
+  ]},
+  {id:"b_deal",label:"Договор и предоплата",color:"#8A7050",tasks:[
+    {id:"t20",text:"Подготовить и подписать контракт с заводом (EN + RU перевод)",detail:"Состав/формула, MOQ, сроки, штрафы, конфиденциальность, права на формулу"},
+    {id:"t21",text:"Внести предоплату 30–50% по инвойсу",detail:"Зафиксировать курс CNY/RUB"},
+    {id:"t22",text:"Получить подтверждение старта работ от завода"}
+  ]}
+ ]
+},
+{id:"p3",label:"Дизайн упаковки",days:"Дни 37–66",
+ team:["Руководитель продуктовой разработки","Дизайнер","Продакт-менеджер","Юрист"],
+ desc:"Разработка дизайна этикетки и коробки, регистрация штрихкодов, проверка ТМ, согласование PPS с заводом.",
+ blocks:[
+  {id:"b_prep",label:"Подготовка к дизайну",color:"#9B6CB8",tasks:[
+    {id:"t23",text:"Получить выкройки (dielines) всей упаковки от завода (AI/PDF)",detail:"Первичная (тюбик/банка/флакон) + вторичная (коробка)"},
+    {id:"t24",text:"Зарегистрировать EAN-13 штрихкод в GS1 Russia",detail:"Отдельный код на каждый SKU"},
+    {id:"t25",text:"Проверить статус ТМ в Роспатенте (ФИПС)",detail:"Если не зарегистрирована — подать заявку (~12 мес. срок)"}
+  ]},
+  {id:"b_design",label:"Разработка дизайна",color:"#9B6CB8",tasks:[
+    {id:"t26",text:"Написать бриф дизайнеру",detail:"Концепция, ЦА, стиль, палитра, обязательные элементы"},
+    {id:"t27",text:"Разработать 2–3 варианта дизайна этикетки и коробки"},
+    {id:"t28",text:"Проверить обязательные элементы по ТР ТС 009/2011",detail:"INCI, объём, срок годности, ЕАС, страна, импортёр, EAN-13"},
+    {id:"t29",text:"Согласовать финальный вариант дизайна с командой"}
+  ]},
+  {id:"b_pps",label:"PPS — предпроизводственный образец",color:"#C06090",tasks:[
+    {id:"t30",text:"Отправить print-ready макет заводу (CMYK, 300 dpi, bleed)"},
+    {id:"t31",text:"Получить и оценить PPS (цветопробу) от завода"},
+    {id:"t32",text:"Подписать Pre-press Approval",detail:"⚠️ Только после подписания PPS — запуск производства"}
+  ]}
+ ]
+},
+{id:"p4",label:"Технология и образцы",days:"Дни 44–78",
+ team:["Руководитель продуктовой разработки","Продакт-менеджер","Технолог"],
+ desc:"Кастомизация ODM-формулы, итерации образцов до утверждения Golden Sample как производственного стандарта.",
+ blocks:[
+  {id:"b_form",label:"Кастомизация формулы",color:"#4E9462",tasks:[
+    {id:"t33",text:"Передать ТЗ на кастомизацию: цвет, запах, текстура, упаковка",detail:"На основе выбранной ODM-формулы"},
+    {id:"t34",text:"Получить образец S1 после кастомизации (DHL, 5–7 дней)"},
+    {id:"t35",text:"Оценить S1 и отправить подробный фидбэк заводу",detail:"Текстура, запах, цвет, нанесение, упаковка"}
+  ]},
+  {id:"b_iter",label:"Итерации образцов",color:"#4E9462",tasks:[
+    {id:"t36",text:"Образец S2 — получить и оценить (если нужны правки)"},
+    {id:"t37",text:"Образец S3 — финальная итерация (при необходимости)"},
+    {id:"t38",text:"Зафиксировать все версии в Sample Log"}
+  ]},
+  {id:"b_gold",label:"Golden Sample",color:"#4E9462",tasks:[
+    {id:"t39",text:"Финальный образец соответствует всем требованиям"},
+    {id:"t40",text:"Подписать акт утверждения Golden Sample (с обеих сторон)"},
+    {id:"t41",text:"Эталон хранится у нас + у завода как QC-стандарт"}
+  ]}
+ ]
+},
+{id:"p5",label:"Сертификация",days:"Дни 44–108",
+ team:["Руководитель продуктовой разработки","Менеджер по сертификации","Юрист"],
+ desc:"Сбор документов от завода, выбор схемы по ТР ТС 009/2011, лабораторные испытания, регистрация декларации, Честный ЗНАК.",
+ blocks:[
+  {id:"b_docs",label:"Документы от производителя",color:"#C06060",tasks:[
+    {id:"t42",text:"Получить INCI-состав с % концентраций (полный)"},
+    {id:"t43",text:"Получить CoA — Certificate of Analysis"},
+    {id:"t44",text:"Получить GMP / ISO 22716 сертификат завода"},
+    {id:"t45",text:"Получить технологический регламент / спецификацию"}
+  ]},
+  {id:"b_scheme",label:"Схема и образцы для РФ",color:"#C06060",tasks:[
+    {id:"t46",text:"Определить схему: декларация ТР ТС 009/2011 или СГР",detail:"СГР — для детской косметики и средств интимной гигиены"},
+    {id:"t47",text:"Заказать образцы для сертификации (5–10 шт.)",detail:"Допустимо в нейтральной упаковке (прозрачные банки)"},
+    {id:"t48",text:"Официально ввезти образцы в РФ отдельным инвойсом",detail:"Или по договору с сертификационным органом"}
+  ]},
+  {id:"b_lab",label:"Испытания и декларация",color:"#C06060",tasks:[
+    {id:"t49",text:"Направить образцы в аккредитованную лабораторию",detail:"Тесты: микробиология, pH, тяжёлые металлы, стабильность"},
+    {id:"t50",text:"Получить Протокол испытаний (14–30 рабочих дней)"},
+    {id:"t51",text:"Зарегистрировать декларацию соответствия",detail:"Срок: 5–10 рабочих дней после протокола. На имя рос. импортёра."},
+    {id:"t52",text:"Добавить номер декларации на макет этикетки"}
+  ]},
+  {id:"b_znak",label:"Честный ЗНАК",color:"#3A9AAA",tasks:[
+    {id:"t53",text:"Зарегистрироваться на chestnyznak.ru (ГИС МТ)"},
+    {id:"t54",text:"Получить GTIN для каждого SKU (GS1 Russia)"},
+    {id:"t55",text:"Настроить эмиссию кодов DataMatrix"},
+    {id:"t56",text:"Согласовать нанесение DataMatrix — завод или РЦ в РФ"}
+  ]}
+ ]
+},
+{id:"p6",label:"Производство и QC",days:"Дни 78–128",
+ team:["Руководитель продуктовой разработки","Менеджер по закупкам","QC-менеджер"],
+ desc:"Запуск производства после утверждения Golden Sample и PPS, инспекция на заводе, получение отгрузочных документов.",
+ blocks:[
+  {id:"b_prod",label:"Запуск производства",color:"#3A9AAA",tasks:[
+    {id:"t57",text:"Запуск только при: ✅ Golden Sample  ✅ PPS  ✅ предоплата"},
+    {id:"t58",text:"Передать Production Order заводу",detail:"Состав, количество, упаковка, DataMatrix (если завод наносит)"},
+    {id:"t59",text:"Согласовать дату готовности к отгрузке (ETD)"}
+  ]},
+  {id:"b_qc",label:"Контроль качества",color:"#3A9AAA",tasks:[
+    {id:"t60",text:"Нанять инспектора QC (SGS / Bureau Veritas / агент)",detail:"За 3–5 дней до готовности партии"},
+    {id:"t61",text:"Провести Pre-shipment Inspection",detail:"Соответствие Golden Sample, упаковка, маркировка, DataMatrix, количество"},
+    {id:"t62",text:"Получить Inspection Report"},
+    {id:"t63",text:"При несоответствии — рекламация и переделка"}
+  ]},
+  {id:"b_shipdoc",label:"Отгрузочные документы",color:"#7A8C6E",tasks:[
+    {id:"t64",text:"Получить Commercial Invoice и Packing List"},
+    {id:"t65",text:"Получить Bill of Lading (B/L) или AWB"},
+    {id:"t66",text:"Получить Certificate of Origin (если нужен для льготных пошлин)"}
+  ]}
+ ]
+},
+{id:"p7",label:"Контент для МП",days:"Дни 100–130",
+ team:["Руководитель продуктовой разработки","Дизайнер","Маркетолог","Копирайтер","SMM-менеджер"],
+ desc:"Создание всего визуального и текстового контента для маркетплейсов и соцсетей. Стартуем с PPS-образцом параллельно с производством.",
+ blocks:[
+  {id:"b_render",label:"Рендер и фото продукта",color:"#C06090",tasks:[
+    {id:"t67",text:"3D-рендер упаковки (Midjourney / Blender / Packshot Studio)",detail:"Можно начинать с PPS-образцом не дожидаясь финальной партии"},
+    {id:"t68",text:"Lifestyle-фото: контекстная съёмка или нейро-генерация"},
+    {id:"t69",text:"Текстурный крупный план / before-after (если применимо)"}
+  ]},
+  {id:"b_card",label:"Карточки товара",color:"#C06090",tasks:[
+    {id:"t70",text:"Обложка (главное фото) — 2 варианта для A/B теста"},
+    {id:"t71",text:"Инфографика: состав, эффекты, УТП, применение — 5–7 слайдов"},
+    {id:"t72",text:"SEO-заголовок: ключи в первых 60 символах"},
+    {id:"t73",text:"Описание: bullet points + полное описание с ключами"},
+    {id:"t74",text:"Rich-контент / брендзона (при наличии подписки МП)"}
+  ]},
+  {id:"b_smm",label:"SMM-контент",color:"#C06090",tasks:[
+    {id:"t75",text:"Контент-план на первые 4 недели продаж"},
+    {id:"t76",text:"Рилсы / шортсы с демонстрацией продукта"},
+    {id:"t77",text:"Контент для посевов в Telegram beauty-каналах"},
+    {id:"t78",text:"UGC — привлечь 2–3 инфлюенсера для первых отзывов"}
+  ]}
+ ]
+},
+{id:"p8",label:"Логистика и таможня",days:"Дни 116–163",
+ team:["Руководитель продуктовой разработки","Менеджер по логистике","Таможенный брокер","Менеджер склада"],
+ desc:"Выбор маршрута, отгрузка с завода, постоплата, таможенное оформление, приёмка и ввод в оборот Честный ЗНАК.",
+ blocks:[
+  {id:"b_log",label:"Логистика",color:"#7A8C6E",tasks:[
+    {id:"t79",text:"Выбрать маршрут доставки",detail:"Авиа 7–14 дн., ж/д 18–25 дн., море 35–45 дн."},
+    {id:"t80",text:"Запросить ставки у 2–3 форвардеров"},
+    {id:"t81",text:"Оформить страховку груза (0.3–0.5% от стоимости)"},
+    {id:"t82",text:"Получить трекинг B/L / AWB после отгрузки"},
+    {id:"t83",text:"Постоплата 50–70% после получения B/L",detail:"Проверить: инвойс совпадает с фактическим грузом"}
+  ]},
+  {id:"b_customs",label:"Таможенное оформление",color:"#7A8C6E",tasks:[
+    {id:"t84",text:"Определить код ТН ВЭД (глава 33: 3304, 3305, 3307)"},
+    {id:"t85",text:"Подать таможенную декларацию (ДТ) через брокера"},
+    {id:"t86",text:"Оплатить пошлину (0–6.5% от FOB) + НДС 20%"},
+    {id:"t87",text:"Предоставить таможне декларацию соответствия / СГР",detail:"⚠️ Документ должен быть готов ДО прихода груза"},
+    {id:"t88",text:"Получить ТПО (таможенное подтверждение о выпуске)"}
+  ]},
+  {id:"b_wh",label:"Склад и Честный ЗНАК",color:"#7A8C6E",tasks:[
+    {id:"t89",text:"Приёмка груза — сверить с Packing List"},
+    {id:"t90",text:"Оформить приходную накладную в 1С"},
+    {id:"t91",text:"Проверить наличие DataMatrix на каждой единице"},
+    {id:"t92",text:"Ввод товара в оборот в системе Честный ЗНАК"}
+  ]}
+ ]
+},
+{id:"p9",label:"Финансы и запуск",days:"Дни 100+",
+ team:["Руководитель продуктовой разработки","Продакт-менеджер","Финансовый менеджер","Маркетолог МП","Менеджер МП"],
+ desc:"Финальный расчёт экономики, бюджет маркетинга, размещение на маркетплейсах, старт продаж и мониторинг результатов.",
+ blocks:[
+  {id:"b_fin",label:"Финансовое планирование",color:"#B89A30",tasks:[
+    {id:"t93",text:"Финальный расчёт Unit-экономики (реальные цифры)",detail:"Landed cost + комиссии МП + логистика МП + % выкупа"},
+    {id:"t94",text:"Проверка: маржа ≥ 25% — иначе пересматриваем цену"},
+    {id:"t95",text:"Рассчитать бюджет маркетинга на старт",detail:"Выкупы 50–100 шт. + отзывы 30 шт. + реклама МП"},
+    {id:"t96",text:"Платёжный календарь + точка безубыточности"},
+    {id:"t97",text:"Резервный бюджет +15% на непредвиденные расходы"}
+  ]},
+  {id:"b_mp",label:"Размещение на маркетплейсах",color:"#C06090",tasks:[
+    {id:"t98",text:"Создать карточки товара Ozon + Wildberries"},
+    {id:"t99",text:"Загрузить контент, характеристики, EAN-13, DataMatrix"},
+    {id:"t100",text:"Загрузить декларацию соответствия / СГР в ЛК МП"},
+    {id:"t101",text:"Подключить FBS, загрузить остатки на собственном складе"}
+  ]},
+  {id:"b_launch",label:"Старт продаж",color:"#4E9462",tasks:[
+    {id:"t102",text:"Запустить внутреннюю рекламу МП в первый день продаж"},
+    {id:"t103",text:"Организовать выкупы 50–100 шт. для подъёма рейтинга"},
+    {id:"t104",text:"Запустить посевы в Telegram beauty-каналах + инфлюенсеры"},
+    {id:"t105",text:"Мониторинг 28 дней: продажи, конверсия, ДРР, отзывы"},
+    {id:"t106",text:"Решение: масштабировать → FBO или корректировать продукт"}
+  ]}
+ ]
+}
+];
 
-<!-- 01 КОНТЕКСТ -->
-<div class="section">
-  <div class="section-label">01 · Контекст и предпосылки</div>
-  <div class="section-title">Почему <em>сейчас</em> и<br>почему СНГ</div>
-  <div class="context-block">
-    <div class="context-text">
-      <h3>Момент для входа — оптимальный</h3>
-      <p>Ecomake — устойчивый бренд с подтверждённым спросом на российском рынке, сформированной аудиторией и рейтинговой массой, которую можно перенести на новые площадки. Органический потенциал роста внутри российских маркетплейсов ограничен — рынок насыщается, конкуренция растёт, привлечение покупателей дорожает.</p>
-      <p>Рынки СНГ — следующая логичная ступень. Одновременно компания переносит производство декоративной косметики в Китай, что даёт возможность закупить новинки крупными партиями и сразу распределить объём по нескольким каналам. Задача выхода на СНГ и задача быстрой оборачиваемости китайских закупок решаются одновременно.</p>
-      <p>Стратегия строится на двух параллельных потоках: немедленный запуск с текущим ассортиментом + постепенное добавление новинок по мере их прихода.</p>
-    </div>
-    <div class="context-kpi">
-      <div><div class="kpi-value">4,5–6 мес.</div><div class="kpi-label">Срок от заказа до полки в СНГ<br>(производство КНР + логистика КНР→РФ→страна)</div></div>
-      <div class="kpi-div"></div>
-      <div><div class="kpi-value">12 000 шт.</div><div class="kpi-label">Минимальный объём заказа на артикул.<br>По товарам с несколькими оттенками МОК<br>делится по цветам.</div></div>
-      <div class="kpi-div"></div>
-      <div><div class="kpi-value">50 / 50</div><div class="kpi-label">Условия оплаты поставщику КНР:<br>50% до производства, 50% до отгрузки</div></div>
-    </div>
-  </div>
-  <div class="note note-warn" style="margin-top:24px">
-    <strong>Смена позиционирования.</strong> С запуском новинок Ecomake сознательно уходит от нарратива «экологичная и натуральная косметика» в сторону трендового, яркого и эстетически выразительного продукта. Коммуникация и упаковка новинок строятся вокруг оттенков, дизайна и видимого эффекта.
-  </div>
-  <div class="note note-grn" style="margin-top:16px">
-    <strong>Не ждать новинок.</strong> Текущий ассортимент Ecomake — минеральные пудры, бальзамы для губ, кремы румяна, уходовые серии — уже готов к отгрузке и становится точкой немедленного входа на все рынки. Работа с партнёрами начинается сейчас: новинки подключаются по мере прихода, встраиваясь в уже отстроенные отношения и отлаженную логистику.
-  </div>
-</div>
+var LS = 'ct_v3';
+var state = {};
+var openB = {};
+var cur = 0;
 
-<!-- 02 ПРОДУКТОВАЯ МАТРИЦА -->
-<div class="section">
-  <div class="section-label">02 · Продуктовая матрица</div>
-  <div class="section-title">Что идёт <em>на экспорт</em></div>
+try { state = JSON.parse(localStorage.getItem(LS) || '{}'); } catch(e){ state = {}; }
+PHASES.forEach(function(p){ p.blocks.forEach(function(b){ openB[b.id] = true; }); });
 
-  <div class="note" style="margin-top:0;margin-bottom:28px">
-    <strong>Важно по МОК.</strong> Для всех товарных групп с несколькими оттенками (хайлайтер, тушь, блески, тональный крем) минимальный объём заказа 12 000 штук <strong>делится по цветам</strong>. Это снижает финансовый риск при тестировании нового рынка — можно запустить несколько оттенков меньшим объёмом на каждый.
-  </div>
+function save(){
+  try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){}
+  var t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(function(){ t.classList.remove('show'); }, 1800);
+}
 
-  <div class="product-grid">
-    <div class="product-card">
-      <div class="product-icon" style="background:#f0e8f8">✨</div>
-      <div class="product-name">Хайлайтер fame</div>
-      <div class="product-meta">Пудреница · 17 г<br>3 оттенка: белый, розовый, бронзовый<br>МОК делится по цветам</div>
-      <div class="product-price-row">
-        <div><div class="product-cost">Себ. ≈ 16,83 ¥/ед.</div><div class="product-moq">МОК: 12 000 шт.</div></div>
-        <div class="product-rrz">2 500–3 000 ₽</div>
-      </div>
-      <div class="product-tags">
-        <span class="product-tag tag-d2c">Новый бренд</span>
-        <span class="product-tag tag-kz">KZ</span><span class="product-tag tag-uz">UZ</span>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-icon" style="background:#e8f0f8">👁</div>
-      <div class="product-name">Тушь yansi</div>
-      <div class="product-meta">Флакон с силиконовой щёткой · 7 мл<br>3 оттенка: чёрный, коричневый, зелёный<br>МОК делится по цветам</div>
-      <div class="product-price-row">
-        <div><div class="product-cost">Себ. ≈ 5,95 ¥/ед.</div><div class="product-moq">МОК: 12 000 шт.</div></div>
-        <div class="product-rrz">350–550 ₽</div>
-      </div>
-      <div class="product-tags">
-        <span class="product-tag tag-mp">Маркетплейс</span>
-        <span class="product-tag tag-kz">KZ</span><span class="product-tag tag-uz">UZ</span><span class="product-tag tag-kg">KG</span>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-icon" style="background:#fce8e8">💋</div>
-      <div class="product-name">Блеск для губ defei / shinuo</div>
-      <div class="product-meta">Флакон с аппликатором · 5 мл<br>6 оттенков: розовый, мокка, вишнёвый, винный, сливовый, мокка<br>МОК делится по цветам</div>
-      <div class="product-price-row">
-        <div><div class="product-cost">Себ. ≈ 6,94 ¥/ед.</div><div class="product-moq">МОК: 12 000 шт.</div></div>
-        <div class="product-rrz">400–600 ₽</div>
-      </div>
-      <div class="product-tags">
-        <span class="product-tag tag-mp">Маркетплейс</span>
-        <span class="product-tag tag-all">Все рынки</span>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-icon" style="background:#e8f8ec">🫙</div>
-      <div class="product-name">Глянцевое желе для губ и щёк defei</div>
-      <div class="product-meta">Стеклянная банка · 3 г<br>2 оттенка: холодный, тёплый<br>МОК делится по оттенкам</div>
-      <div class="product-price-row">
-        <div><div class="product-cost">Себ. ≈ 8,11 ¥/ед.</div><div class="product-moq">МОК: 12 000 шт.</div></div>
-        <div class="product-rrz">450–650 ₽</div>
-      </div>
-      <div class="product-tags">
-        <span class="product-tag tag-mp">Маркетплейс</span>
-        <span class="product-tag tag-kz">KZ</span><span class="product-tag tag-uz">UZ</span><span class="product-tag tag-by">BY</span>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-icon" style="background:#f8f4e8">🔬</div>
-      <div class="product-name">Двухфазный тональный крем defei / meca</div>
-      <div class="product-meta">Стекло + дозатор · 15, 25, 30 мл<br>2 оттенка: холодный, тёплый<br>МОК делится по оттенкам и объёмам</div>
-      <div class="product-price-row">
-        <div><div class="product-cost">Себ. ≈ 11,70–19,55 ¥/ед.</div><div class="product-moq">МОК: 12 000 шт.</div></div>
-        <div class="product-rrz">700–1 500 ₽</div>
-      </div>
-      <div class="product-tags">
-        <span class="product-tag tag-mp">Маркетплейс</span>
-        <span class="product-tag tag-kz">KZ</span><span class="product-tag tag-uz">UZ</span><span class="product-tag tag-by">BY</span>
-      </div>
-    </div>
-    <div class="product-card" style="background:var(--bg-w);border-style:dashed">
-      <div class="product-icon" style="background:rgba(138,111,90,.12)">📦</div>
-      <div class="product-name">Текущий ассортимент Ecomake</div>
-      <div class="product-meta">Минеральные пудры · Бальзамы для губ<br>Румяна · Кремы · Уходовые серии<br>Уже производится, готов к отгрузке</div>
-      <div class="product-price-row">
-        <div><div class="product-cost">Действующее производство</div><div class="product-moq">Доступны сейчас</div></div>
-        <div class="product-rrz">от 350 ₽</div>
-      </div>
-      <div class="product-tags">
-        <span class="product-tag tag-all">Точка входа — все рынки</span>
-      </div>
-    </div>
-  </div>
-</div>
+function pStats(p){
+  var tot=0, don=0;
+  p.blocks.forEach(function(b){ b.tasks.forEach(function(t){ tot++; if(state[t.id]) don++; }); });
+  return {tot:tot, don:don};
+}
+function allStats(){
+  var tot=0, don=0;
+  PHASES.forEach(function(p){ var s=pStats(p); tot+=s.tot; don+=s.don; });
+  return {tot:tot, don:don};
+}
 
-<!-- 03 ДВА СЕГМЕНТА -->
-<div class="section">
-  <div class="section-label">03 · Стратегия позиционирования</div>
-  <div class="section-title">Два <em>ценовых сегмента</em>,<br>две стратегии</div>
-  <div class="positioning-matrix">
-    <div class="pos-card pos-base">
-      <div class="pos-sub">Сегмент А · Ecomake. Основная линейка</div>
-      <h3>Средний сегмент</h3>
-      <div class="pos-price">~500 ₽</div>
-      <div class="pos-price-sub">средняя розничная цена на маркетплейсе</div>
-      <ul class="pos-list">
-        <li>Тушь, блески, желе для губ, тональный крем, текущий ассортимент</li>
-        <li>Канал: маркетплейсы и партнёры-дистрибуторы во всех целевых странах</li>
-        <li>В России: продаётся на Ozon, WB, Яндекс Маркет</li>
-        <li>Акцент коммуникации: трендовые оттенки, эстетика упаковки, видимый эффект</li>
-        <li>Работает с текущего момента — ждать новинок не нужно</li>
-      </ul>
-    </div>
-    <div class="pos-card pos-premium">
-      <div class="pos-gold-accent"></div>
-      <div class="pos-sub">Сегмент Б · Новый бренд. Люкс-линейка</div>
-      <h3>Люкс-сегмент</h3>
-      <div class="pos-price">2 500–3 000 ₽</div>
-      <div class="pos-price-sub">розничная цена за единицу</div>
-      <ul class="pos-list">
-        <li>Хайлайтер fame, 3 оттенка — выходит под отдельным самостоятельным брендом</li>
-        <li>В России: только через D2C-канал (сайт + внешний трафик). На WB и Ozon не выходит</li>
-        <li>В СНГ (KZ, UZ): на маркетплейсах и через партнёров строго в верхнем ценовом коридоре</li>
-        <li>«Недоступен на российских маркетплейсах» — элемент эксклюзивности</li>
-        <li>Поставки в СНГ — партиями на партнёра / склад площадки, не единичными отправками</li>
-      </ul>
-    </div>
-  </div>
-</div>
+function renderSidebar(){
+  var html = '';
+  PHASES.forEach(function(p, i){
+    var s = pStats(p);
+    var pct = s.tot ? Math.round(s.don/s.tot*100) : 0;
+    html += '<button class="pbtn'+(i===cur?' active':'')+'" onclick="go('+i+')">';
+    html += '<div class="pnum">'+(i+1)+'</div>';
+    html += '<div class="pinfo"><div class="pname">'+p.label+'</div><div class="pdays">'+p.days+'</div></div>';
+    html += '<div class="ppct">'+pct+'%</div></button>';
+    html += '<div class="pminibar"><div class="pminifill" style="width:'+pct+'%"></div></div>';
+  });
+  document.getElementById('sidebar').innerHTML = html;
+}
 
-<!-- 04 ПРИОРИТЕТ РЫНКОВ -->
-<div class="section">
-  <div class="section-label">04 · Приоритет рынков</div>
-  <div class="section-title">Где и в какой<br><em>последовательности</em></div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Рынок</th><th>Приоритет</th><th>Почему сейчас</th><th>Ключевой барьер</th><th>Якорный канал</th></tr></thead>
-      <tbody>
-        <tr><td>🇰🇿 Казахстан</td><td><span class="badge badge-y">№ 1</span></td><td>Крупнейший рынок региона. Kaspi 13 млн пользователей, доля 70%+ онлайна. ЕАЭС — российская декларация действует. Готовые партнёры.</td><td>Требуется казахстанское ТОО или ИП для Kaspi</td><td>Kaspi → WB KZ → Ozon KZ</td></tr>
-        <tr><td>🇺🇿 Узбекистан</td><td><span class="badge badge-y">№ 2</span></td><td>CAGR +9%, 36 млн молодой аудитории. Eye makeup культурно в приоритете. Uzum FBS — старт без юрлица в стране.</td><td>Вне ЕАЭС: O'zstandard + Asl Belgisi. Для онлайн-старта барьер отложен.</td><td>Uzum Market (FBS)</td></tr>
-        <tr><td>🇰🇬 Кыргызстан</td><td><span class="badge badge-neu">№ 3</span></td><td>ЕАЭС — нулевой барьер. Forester Distribution — 15 000 точек. K-beauty растёт +379% за 3 года: важно войти до насыщения.</td><td>Небольшой рынок. Дистрибутор не beauty-специфичный.</td><td>Forester → Neman (уход)</td></tr>
-        <tr><td>🇧🇾 Беларусь</td><td><span class="badge badge-neu">В резерве</span></td><td>ЕАЭС, WB BY и Ozon BY уже работают из российского кабинета без отдельного ТОО. Золотое Яблоко — 2 магазина в Минске.</td><td>Нет оптового партнёра для офлайна. Белита-Витекс сильна в массе.</td><td>WB BY / Ozon BY (из РФ)</td></tr>
-        <tr><td>🇦🇿 Азербайджан</td><td><span class="badge badge-w">Тест</span></td><td>Рынок $881 млн. Ниши после ухода западных игроков. Контакты с партнёрами уже есть.</td><td>Вне ЕАЭС, нужна AZS. Офлайн доминирует.</td><td>ИП Гафаров → Bryte Beauty</td></tr>
-        <tr><td>🇬🇪 Грузия</td><td><span class="badge badge-w">Тест</span></td><td>Высокомаржинальный рынок (маржа дистрибутора до 50%). Туристический трафик.</td><td>Вне ЕАЭС, SAKSTAN. Prestige LLC требует кейсов из других стран.</td><td>Iveria France → Prestige LLC</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+function renderTop(){
+  var s = allStats();
+  var pct = s.tot ? Math.round(s.don/s.tot*100) : 0;
+  document.getElementById('tfill').style.width = pct+'%';
+  document.getElementById('tpct').textContent = pct+'%';
+}
 
-<!-- 05 СЕРТИФИКАЦИЯ -->
-<div class="section">
-  <div class="section-label">05 · Сертификация и маркировка упаковки</div>
-  <div class="section-title">Требования по каждой<br><em>стране</em></div>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Страна</th><th>ЕАЭС</th><th>Обязательный язык</th><th>Достаточен ли английский?</th><th>Вкладыш / стикер</th><th>Доп. сертификация</th><th>Цифровая маркировка</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>🇰🇿 Казахстан</td>
-          <td><span class="badge badge-y">✓ ЕАЭС</span></td>
-          <td><strong>Казахский + русский</strong><br><span style="font-size:12px;color:var(--ink-f)">Оба обязательны по ТР ТС</span></td>
-          <td><span class="badge badge-n">Нет</span><br><span style="font-size:12px;color:var(--ink-f)">Английский не заменяет казахский</span></td>
-          <td><span class="badge badge-y">Допустим</span></td>
-          <td><span class="badge badge-y">Не нужна</span><br><span style="font-size:12px;color:var(--ink-f)">Декларация РФ по ТР ТС действует</span></td>
-          <td><span class="badge badge-neu">Развивается</span><br><span style="font-size:12px;color:var(--ink-f)">Пока не введена для декора</span></td>
-        </tr>
-        <tr>
-          <td>🇧🇾 Беларусь</td>
-          <td><span class="badge badge-y">✓ ЕАЭС</span></td>
-          <td><strong>Русский</strong><br><span style="font-size:12px;color:var(--ink-f)">Достаточен на практике</span></td>
-          <td><span class="badge badge-n">Нет</span><br><span style="font-size:12px;color:var(--ink-f)">Английский как доп., не обязателен</span></td>
-          <td><span class="badge badge-y">Допустим</span></td>
-          <td><span class="badge badge-y">Не нужна</span></td>
-          <td><span class="badge badge-y">Не введена</span></td>
-        </tr>
-        <tr>
-          <td>🇰🇬 Кыргызстан</td>
-          <td><span class="badge badge-y">✓ ЕАЭС</span></td>
-          <td><strong>Русский</strong><br><span style="font-size:12px;color:var(--ink-f)">Кыргызский как доп.</span></td>
-          <td><span class="badge badge-n">Нет</span><br><span style="font-size:12px;color:var(--ink-f)">Английский не обязателен и не заменяет русский</span></td>
-          <td><span class="badge badge-y">Допустим</span></td>
-          <td><span class="badge badge-y">Не нужна</span></td>
-          <td><span class="badge badge-y">Не введена</span></td>
-        </tr>
-        <tr>
-          <td>🇺🇿 Узбекистан</td>
-          <td><span class="badge badge-n">✗ Вне ЕАЭС</span></td>
-          <td><strong>Узбекский — обязателен</strong><br><span style="font-size:12px;color:var(--ink-f)">Русский — дополнительно</span></td>
-          <td><span class="badge badge-n">Нет</span><br><span style="font-size:12px;color:var(--ink-f)">Английский не заменяет узбекский</span></td>
-          <td><span class="badge badge-w">Стикер/вкладыш на узбекском — переходный период</span></td>
-          <td><span class="badge badge-n">O'zstandard</span><br><span style="font-size:12px;color:var(--ink-f)">2–4 мес., от 50 000 ₽</span></td>
-          <td><span class="badge badge-n">Asl Belgisi обязательна с окт. 2025</span></td>
-        </tr>
-        <tr>
-          <td>🇦🇿 Азербайджан</td>
-          <td><span class="badge badge-n">✗ Вне ЕАЭС</span></td>
-          <td><strong>Азербайджанский</strong><br><span style="font-size:12px;color:var(--ink-f)">Русский — доп.</span></td>
-          <td><span class="badge badge-n">Нет</span><br><span style="font-size:12px;color:var(--ink-f)">Английский не заменяет азерб.</span></td>
-          <td><span class="badge badge-w">Стикер / вкладыш допустим</span></td>
-          <td><span class="badge badge-n">AZS Gosstandart</span><br><span style="font-size:12px;color:var(--ink-f)">2–4 мес., от 50 000 ₽</span></td>
-          <td><span class="badge badge-y">Не введена</span></td>
-        </tr>
-        <tr>
-          <td>🇬🇪 Грузия</td>
-          <td><span class="badge badge-n">✗ Вне ЕАЭС</span></td>
-          <td><strong>Грузинский</strong><br><span style="font-size:12px;color:var(--ink-f)">Русский — доп.</span></td>
-          <td><span class="badge badge-y">Да, как доп.</span><br><span style="font-size:12px;color:var(--ink-f)">Грузинский + английский допустимо</span></td>
-          <td><span class="badge badge-w">Стикер / вкладыш допустим</span></td>
-          <td><span class="badge badge-n">SAKSTAN</span><br><span style="font-size:12px;color:var(--ink-f)">2–4 мес., от 50 000 ₽</span></td>
-          <td><span class="badge badge-y">Не введена</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="note" style="margin-top:24px">
-    <strong>Практическое решение.</strong> Пока дизайн новинок не ушёл в печать — добавить казахский язык прямо в макет. Это закрывает KZ, BY и KG без доработок. Для Узбекистана — узбекоязычный вкладыш или стикер на переходный период. Английский язык нигде не заменяет обязательный местный, но в Грузии принимается как один из допустимых.
-  </div>
-</div>
+function renderStats(){
+  var s = allStats();
+  var pct = s.tot ? Math.round(s.don/s.tot*100) : 0;
+  document.getElementById('statsbar').innerHTML =
+    '<div class="stat"><div class="snum">'+PHASES.length+'</div><div class="slbl">этапов</div></div>'+
+    '<div class="stat"><div class="snum">'+s.tot+'</div><div class="slbl">задач всего</div></div>'+
+    '<div class="stat"><div class="snum">'+s.don+'</div><div class="slbl">выполнено</div></div>'+
+    '<div class="stat"><div class="snum">'+pct+'%</div><div class="slbl">прогресс</div></div>';
+}
 
-<!-- 06 ДОРОЖНАЯ КАРТА -->
-<div class="section">
-  <div class="section-label">06 · Дорожная карта</div>
-  <div class="section-title">Два потока работы<br><em>параллельно</em></div>
+function renderContent(){
+  var p = PHASES[cur];
+  var s = pStats(p);
+  var pct = s.tot ? Math.round(s.don/s.tot*100) : 0;
 
-  <div class="phases">
-    <div class="phase-card ph1">
-      <div class="phase-num">Подготовка</div>
-      <div class="phase-period">Июнь — Июль 2026</div>
-      <ul class="phase-items">
-        <li><strong>Коммерческое предложение</strong> и ценовая архитектура для партнёров</li>
-        <li><strong>Проверка складских остатков</strong> и расчёт объёма для первых отгрузок</li>
-        <li><strong>Заказ новинок</strong> у поставщиков КНР</li>
-        <li><strong>Казахский язык</strong> в макет упаковки</li>
-        <li><strong>Регистрация ТОО</strong> в Казахстане</li>
-        <li><strong>Старт переговоров</strong> с KZ, KG, UZ</li>
-      </ul>
-    </div>
-    <div class="phase-card ph2">
-      <div class="phase-num">Первые отгрузки</div>
-      <div class="phase-period">Август — Октябрь 2026</div>
-      <ul class="phase-items">
-        <li><strong>Финализация условий</strong> с партнёрами</li>
-        <li><strong>Первые отгрузки</strong> текущего ассортимента в KZ и KG</li>
-        <li><strong>Запуск Uzum Market</strong> (FBS из России)</li>
-        <li><strong>WB BY / Ozon BY</strong> активация из российского кабинета</li>
-        <li><strong>Сертификация UZ</strong> O'zstandard в процессе</li>
-        <li><strong>Сбор отзывов</strong> на всех площадках</li>
-      </ul>
-    </div>
-    <div class="phase-card ph3">
-      <div class="phase-num">Новинки в СНГ</div>
-      <div class="phase-period">Ноябрь 2026 — Январь 2027</div>
-      <ul class="phase-items">
-        <li><strong>Новинки приезжают</strong> в Россию (~6 мес. от заказа)</li>
-        <li><strong>Запуск новинок</strong> в России на WB/Ozon, хайлайтер — D2C</li>
-        <li><strong>Поставки новинок</strong> прогретым партнёрам в KZ и UZ</li>
-        <li><strong>Обновление листингов</strong> на всех площадках</li>
-        <li><strong>Получение сертификата UZ</strong> → активация офлайна</li>
-      </ul>
-    </div>
-    <div class="phase-card ph4">
-      <div class="phase-num">Масштабирование</div>
-      <div class="phase-period">Февраль — Август 2027</div>
-      <ul class="phase-items">
-        <li><strong>Офлайн KZ</strong>: Cosmart листинг, Prima Distribution</li>
-        <li><strong>Офлайн UZ</strong>: Kostaraid, Vinland</li>
-        <li><strong>Партнёр BY</strong>: офлайн активация</li>
-        <li><strong>Масштаб AZ</strong>: Bryte Beauty от тестовых отгрузок</li>
-        <li><strong>Вход в Грузию</strong>: Iveria France</li>
-        <li><strong>Золотое Яблоко BY</strong>: переговоры с кейсами</li>
-      </ul>
-    </div>
-  </div>
+  var html = '<div class="ph">';
+  html += '<div class="ph-top"><div class="ph-title">Этап '+(cur+1)+'. '+p.label+'</div>';
+  html += '<div class="ph-badge">'+p.days+'</div></div>';
+  html += '<div class="ph-desc">'+p.desc+'</div>';
+  html += '<div class="team-lbl">Участники этапа</div>';
+  html += '<div class="chips">';
+  p.team.forEach(function(m, i){
+    html += '<span class="chip'+(i===0?' lead':'')+'">'+m+'</span>';
+  });
+  html += '</div>';
+  html += '<div class="phbar-row"><div class="phbar"><div class="phfill" style="width:'+pct+'%"></div></div>';
+  html += '<div class="phlbl">'+s.don+'/'+s.tot+'</div></div></div>';
 
-  <!-- ДИАГРАММА ГАНТА -->
-  <div class="gantt-wrap">
-    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-f);margin-bottom:28px;font-weight:600">Диаграмма Ганта · Июнь 2026 — Февраль 2027</div>
+  p.blocks.forEach(function(b){
+    var bdone = b.tasks.filter(function(t){ return state[t.id]; }).length;
+    var isOpen = openB[b.id];
+    html += '<div class="block">';
+    html += '<div class="bhdr" onclick="toggleB(\''+b.id+'\')">';
+    html += '<div class="bdot" style="background:'+b.color+'"></div>';
+    html += '<div class="bname">'+b.label+'</div>';
+    html += '<div class="bcnt">'+bdone+'/'+b.tasks.length+'</div>';
+    html += '<div class="bchev'+(isOpen?' open':'')+'">&#8964;</div>';
+    html += '</div>';
+    if(isOpen){
+      html += '<div class="bbody">';
+      b.tasks.forEach(function(t){
+        var done = !!state[t.id];
+        var hasCom = !!(state['c_'+t.id]);
+        var showCom = !!state['oc_'+t.id];
+        html += '<div class="task">';
+        html += '<div class="tmain">';
+        html += '<div class="cb'+(done?' done':'')+'" onclick="toggleT(\''+t.id+'\')"></div>';
+        html += '<div class="tbody">';
+        html += '<div class="ttext'+(done?' done':'')+'">'+t.text+'</div>';
+        if(t.detail) html += '<div class="tdetail">'+t.detail+'</div>';
+        html += '</div></div>';
+        html += '<div class="tfooter">';
+        html += '<button class="cbtn'+(hasCom?' has':'')+'" onclick="toggleC(\''+t.id+'\')">&#128172; '+(hasCom?'комментарий':'добавить комментарий')+'</button>';
+        html += '</div>';
+        if(showCom || hasCom){
+          var cv = (state['c_'+t.id]||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          html += '<div class="cwrap"><textarea placeholder="Комментарий, статус, дата..." onchange="saveC(\''+t.id+'\',this.value)">'+cv+'</textarea></div>';
+        }
+        html += '</div>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+  });
 
-    <!-- HEADER -->
-    <div style="display:flex;padding-left:220px">
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--acc)">Июн 26</div>
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f)">Июл 26</div>
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f)">Авг 26</div>
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f)">Сен 26</div>
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f)">Окт 26</div>
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f)">Ноя 26</div>
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f)">Дек 26</div>
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f)">Янв 27</div>
-      <div style="flex:1;min-width:72px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-f)">Фев 27</div>
-    </div>
+  document.getElementById('content').innerHTML = html;
+}
 
-    <div style="height:16px"></div>
+function go(i){ cur=i; renderSidebar(); renderContent(); }
+function toggleB(id){ openB[id]=!openB[id]; renderContent(); }
+function toggleT(id){ state[id]=!state[id]; save(); renderSidebar(); renderTop(); renderStats(); renderContent(); }
+function toggleC(id){ state['oc_'+id]=!state['oc_'+id]; renderContent(); }
+function saveC(id,val){ state['c_'+id]=val; save(); renderSidebar(); renderContent(); }
 
-    <!-- GROUP A -->
-    <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--acc);margin-bottom:10px;padding-left:0">Поток А · Текущий ассортимент → партнёры</div>
+renderSidebar();
+renderTop();
+renderStats();
+renderContent();
+</script>
 
-    <!-- ROW: КП и ценообразование -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">КП и ценовая архитектура</div></div>
-      <div style="display:flex;flex:1;position:relative;height:40px">
-        <div style="flex:1;min-width:72px;height:40px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#c47a3a,#d4924a);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Разработка</div>
-        </div>
-        <div style="flex:1;min-width:72px;height:40px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:6px;background:linear-gradient(90deg,#c47a3a,#d4924a);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff"></div>
-        </div>
-        <div style="flex:7;min-width:504px"></div>
-      </div>
-    </div>
 
-    <!-- ROW: Переговоры KZ/KG/UZ -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Переговоры KZ · KG · UZ</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:1;min-width:72px"></div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#3a5a8a,#4a6a9a);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Переговоры</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:6px;background:linear-gradient(90deg,#3a5a8a,#4a6a9a)"></div>
-        </div>
-        <div style="flex:6;min-width:432px"></div>
-      </div>
-    </div>
-
-    <!-- ROW: Первые отгрузки текущего ассортимента -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Отгрузки текущего ассорт.</div><div style="font-size:11px;color:var(--ink-f)">KZ, KG, UZ, BY</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:3;min-width:216px"></div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#4e7a5a,#6a9a72);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Старт отгрузок</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#4e7a5a,#6a9a72)"></div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#4e7a5a,#6a9a72)"></div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#4e7a5a,#6a9a72);display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:600;color:#fff">Регулярно</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#4e7a5a,#6a9a72)"></div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:0 6px 6px 0;background:linear-gradient(90deg,#4e7a5a,#6a9a72)"></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="height:8px;border-top:1px dashed var(--brd);margin:4px 0 12px 220px"></div>
-
-    <!-- GROUP B -->
-    <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Поток Б · Новинки из Китая</div>
-
-    <!-- ROW: Заказ в КНР -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Заказ у поставщиков КНР</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:4px;border-radius:6px;background:linear-gradient(90deg,#a07830,#c09840);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Заказ КНР</div>
-        </div>
-        <div style="flex:8;min-width:576px"></div>
-      </div>
-    </div>
-
-    <!-- ROW: Производство КНР -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Производство КНР</div><div style="font-size:11px;color:var(--ink-f)">~1 месяц</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:1;min-width:72px"></div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:4px;border-radius:6px;background:linear-gradient(90deg,#a07830,#c09840);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Производство</div>
-        </div>
-        <div style="flex:7;min-width:504px"></div>
-      </div>
-    </div>
-
-    <!-- ROW: Логистика КНР→РФ -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Логистика КНР → Россия</div><div style="font-size:11px;color:var(--ink-f)">3,5–4 месяца</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:2;min-width:144px"></div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#2a6a6a,#3a8a8a);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">В пути КНР→РФ</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#2a6a6a,#3a8a8a)"></div></div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#2a6a6a,#3a8a8a)"></div></div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:0 6px 6px 0;background:linear-gradient(90deg,#2a6a6a,#3a8a8a)"></div></div>
-        <div style="flex:2;min-width:144px"></div>
-      </div>
-    </div>
-
-    <!-- ROW: Новинки в России -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Новинки в РФ + D2C</div><div style="font-size:11px;color:var(--ink-f)">WB/Ozon РФ, хайлайтер D2C</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:6;min-width:432px"></div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#2a2420,#3a342e);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Лонч РФ</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#2a2420,#3a342e)"></div></div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:0 6px 6px 0;background:linear-gradient(90deg,#2a2420,#3a342e)"></div></div>
-      </div>
-    </div>
-
-    <!-- ROW: Новинки → партнёры СНГ -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Новинки → партнёры СНГ</div><div style="font-size:11px;color:var(--ink-f)">+1 мес. транзит РФ→страна</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:7;min-width:504px"></div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#6a3a8a,#8a5aaa);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Лонч СНГ</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:0 6px 6px 0;background:linear-gradient(90deg,#6a3a8a,#8a5aaa)"></div></div>
-      </div>
-    </div>
-
-    <div style="height:8px;border-top:1px dashed var(--brd);margin:4px 0 12px 220px"></div>
-
-    <!-- GROUP C -->
-    <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--grn);margin-bottom:10px">Поток В · Операционная и регуляторная подготовка</div>
-
-    <!-- ROW: Упаковка KZ -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Упаковка: казахский язык</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#4e7a5a,#6a9a72);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">В макет</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:0 6px 6px 0;background:linear-gradient(90deg,#4e7a5a,#6a9a72)"></div></div>
-        <div style="flex:7;min-width:504px"></div>
-      </div>
-    </div>
-
-    <!-- ROW: Сертификация UZ -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Сертификация UZ (O'zstandard)</div><div style="font-size:11px;color:var(--ink-f)">2–4 месяца</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:1;min-width:72px"></div>
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#4e7a5a,#6a9a72);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Подача</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#4e7a5a,#6a9a72);display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:600;color:#fff">В процессе</div></div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:0 6px 6px 0;background:linear-gradient(90deg,#4e7a5a,#6a9a72);display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:600;color:#fff">✓ Готово</div></div>
-        <div style="flex:5;min-width:360px"></div>
-      </div>
-    </div>
-
-    <!-- ROW: Поиск партнёра BY -->
-    <div style="display:flex;align-items:center;margin-bottom:8px;min-height:40px">
-      <div style="width:220px;flex-shrink:0;padding-right:16px"><div style="font-size:12.5px;font-weight:500;color:var(--ink)">Поиск партнёра BY офлайн</div></div>
-      <div style="display:flex;flex:1;height:40px">
-        <div style="flex:1;min-width:72px;position:relative">
-          <div style="position:absolute;top:8px;bottom:8px;left:4px;right:0;border-radius:6px;background:linear-gradient(90deg,#3a5a8a,#4a6a9a);display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:600;color:#fff">Активный поиск</div>
-        </div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:0;background:linear-gradient(90deg,#3a5a8a,#4a6a9a)"></div></div>
-        <div style="flex:1;min-width:72px;position:relative"><div style="position:absolute;top:8px;bottom:8px;left:0;right:4px;border-radius:0 6px 6px 0;background:linear-gradient(90deg,#3a5a8a,#4a6a9a)"></div></div>
-        <div style="flex:6;min-width:432px"></div>
-      </div>
-    </div>
-
-    <!-- LEGEND -->
-    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--brd);display:flex;gap:24px;flex-wrap:wrap">
-      <div style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink-f);margin-right:8px;align-self:center">Легенда:</div>
-      <div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:12px;border-radius:3px;background:linear-gradient(90deg,#c47a3a,#d4924a)"></div><span style="font-size:12px;color:var(--ink-l)">Подготовка / КП</span></div>
-      <div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:12px;border-radius:3px;background:linear-gradient(90deg,#3a5a8a,#4a6a9a)"></div><span style="font-size:12px;color:var(--ink-l)">Переговоры / поиск</span></div>
-      <div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:12px;border-radius:3px;background:linear-gradient(90deg,#4e7a5a,#6a9a72)"></div><span style="font-size:12px;color:var(--ink-l)">Отгрузки / операции</span></div>
-      <div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:12px;border-radius:3px;background:linear-gradient(90deg,#a07830,#c09840)"></div><span style="font-size:12px;color:var(--ink-l)">Новинки КНР</span></div>
-      <div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:12px;border-radius:3px;background:linear-gradient(90deg,#2a6a6a,#3a8a8a)"></div><span style="font-size:12px;color:var(--ink-l)">Логистика</span></div>
-      <div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:12px;border-radius:3px;background:linear-gradient(90deg,#2a2420,#3a342e)"></div><span style="font-size:12px;color:var(--ink-l)">Лонч в России</span></div>
-      <div style="display:flex;align-items:center;gap:8px"><div style="width:28px;height:12px;border-radius:3px;background:linear-gradient(90deg,#6a3a8a,#8a5aaa)"></div><span style="font-size:12px;color:var(--ink-l)">Лонч новинок в СНГ</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- 07 ПАРТНЁРЫ -->
-<div class="section">
-  <div class="section-label">07 · Партнёрская карта</div>
-  <div class="section-title">Кто и в какой<br><em>последовательности</em></div>
-
-  <div class="partner-country">
-    <div class="partner-country-header"><span class="country-flag">🇰🇿</span><div class="country-info"><h4>Казахстан</h4><span>ЕАЭС · Kaspi-first · Якорный рынок</span></div><span class="country-priority pr-1">Приоритет №1</span></div>
-    <div class="partner-list">
-      <div class="partner-item"><div class="partner-step">Этап 1 · Онлайн</div><div class="partner-name">Kaspi Магазин</div><div class="partner-desc">13 млн пользователей, 70%+ онлайна. Рассрочка Kaspi Red. Health & Beauty +62% г/г. Требуется ТОО KZ.</div></div>
-      <div class="partner-item"><div class="partner-step">Этап 1 · Параллельно</div><div class="partner-name">Wildberries KZ / Ozon KZ</div><div class="partner-desc">Прямой перенос контента и рейтингов из российских кабинетов. WB KZ: +44% продаж местных продавцов.</div></div>
-      <div class="partner-item"><div class="partner-step">Этап 2 · Офлайн-тест</div><div class="partner-name">Cosmart</div><div class="partner-desc">32+ дрогери в Алматы и Астане. Прямой листинг, нужна отдельная позиция по условиям наценки.</div></div>
-      <div class="partner-item"><div class="partner-step">Этап 2 · Ритейл</div><div class="partner-name">Monami</div><div class="partner-desc">Beauty-ритейл с онлайн-компонентом, европейская эстетика. Контакт установлен.</div></div>
-      <div class="partner-item"><div class="partner-step">Этап 3 · Масштаб</div><div class="partner-name">Prima Distribution</div><div class="partner-desc">43 000 торговых точек, 37 филиалов, с 1993 г. Нужен выделенный beauty-менеджер внутри команды.</div></div>
-      <div class="partner-item"><div class="partner-step">Этап 2 · Субрегион</div><div class="partner-name">Индира (ИП)</div><div class="partner-desc">Субрегиональный партнёр: Актау, Атырау. Кандидат на эксклюзив без блокировки всего рынка.</div></div>
-    </div>
-  </div>
-
-  <div class="partner-country">
-    <div class="partner-country-header"><span class="country-flag">🇺🇿</span><div class="country-info"><h4>Узбекистан</h4><span>CAGR +9% · Eye makeup в приоритете · Uzum FBS без юрлица</span></div><span class="country-priority pr-2">Приоритет №2</span></div>
-    <div class="partner-list">
-      <div class="partner-item"><div class="partner-step">Этап 1 · Онлайн</div><div class="partner-name">Uzum Market (FBS)</div><div class="partner-desc">7+ млн покупателей. Отгрузка со склада в России. Подключение через seller.uzum.uz без юрлица в стране. Рассрочка Nasiya +45% конверсии.</div></div>
-      <div class="partner-item"><div class="partner-step">Этап 2 · Офлайн</div><div class="partner-name">Kostaraid</div><div class="partner-desc">Офлайн-дистрибуция по Узбекистану. Охват несетевой розницы за пределами онлайна.</div></div>
-      <div class="partner-item"><div class="partner-step">Этап 2 · Расширение</div><div class="partner-name">Vinland</div><div class="partner-desc">Дополнительный дистрибуторский канал для расширения географического охвата.</div></div>
-    </div>
-  </div>
-
-  <div class="grid-2" style="gap:20px">
-    <div class="partner-country" style="margin:0">
-      <div class="partner-country-header"><span class="country-flag">🇰🇬</span><div class="country-info"><h4>Кыргызстан</h4><span>ЕАЭС · Нулевой барьер</span></div><span class="country-priority pr-3">Приоритет №3</span></div>
-      <div class="partner-list" style="grid-template-columns:1fr 1fr">
-        <div class="partner-item"><div class="partner-step">Этап 1 · Основной</div><div class="partner-name">Forester Distribution</div><div class="partner-desc">С 1997 г. 15 000 точек. Нужен акцент на бренд внутри переговоров.</div></div>
-        <div class="partner-item" style="border-right:none"><div class="partner-step">Этап 1 · Уход</div><div class="partner-name">Neman (аптеки)</div><div class="partner-desc">Аптечный канал для уходовых SKU.</div></div>
-      </div>
-    </div>
-    <div class="partner-country" style="margin:0">
-      <div class="partner-country-header"><span class="country-flag">🇧🇾</span><div class="country-info"><h4>Беларусь</h4><span>ЕАЭС · WB/Ozon из РФ</span></div><span class="country-priority pr-r">В резерве</span></div>
-      <div class="partner-list" style="grid-template-columns:1fr 1fr">
-        <div class="partner-item"><div class="partner-step">Сейчас</div><div class="partner-name">WB BY / Ozon BY</div><div class="partner-desc">Из российского кабинета без доп. регистрации.</div></div>
-        <div class="partner-item" style="border-right:none"><div class="partner-step">Этап 2</div><div class="partner-name">Золотое Яблоко BY</div><div class="partner-desc">2 магазина в Минске. После кейсов в регионе.</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 08 МОДЕЛЬ СОТРУДНИЧЕСТВА -->
-<div class="section">
-  <div class="section-label">08 · Модель сотрудничества</div>
-  <div class="section-title">Что делает <em>бренд</em>,<br>что делает партнёр</div>
-  <div class="resp-grid">
-    <div class="resp-card resp-brand">
-      <h4>Ecomake · Бренд</h4>
-      <div class="sub">Продукт, маркетинг, ценовая архитектура</div>
-      <div class="resp-item"><div class="resp-icon">📦</div><div class="resp-text"><strong>Продукт и поставки.</strong> Производство, контроль качества, своевременные отгрузки по согласованной отпускной цене.</div></div>
-      <div class="resp-item"><div class="resp-icon">💰</div><div class="resp-text"><strong>Ценовая архитектура.</strong> Устанавливаем РРЦ. Отпускная цена даёт партнёру маржу. Ценовой коридор — под контролем, особенно в люкс-сегменте. Учитываем, что покупатели в СНГ видят цены на WB/Ozon РФ.</div></div>
-      <div class="resp-item"><div class="resp-icon">📱</div><div class="resp-text"><strong>Брендовый маркетинг.</strong> Аккаунты в соцсетях на территориях. Медийная реклама. Контент для карточек товара. Инфлюенсер-маркетинг (пул микро- и нано-блогеров).</div></div>
-      <div class="resp-item"><div class="resp-icon">📄</div><div class="resp-text"><strong>Документация.</strong> Декларации соответствия, сертификаты, адаптация упаковки под требования рынка.</div></div>
-    </div>
-    <div class="resp-card resp-partner">
-      <h4>Партнёр</h4>
-      <div class="sub">Операционка, площадка, продажи</div>
-      <div class="resp-item"><div class="resp-icon" style="background:var(--grn-p)">🛒</div><div class="resp-text"><strong>Операционное управление площадкой.</strong> Ведение кабинета, листинг, управление остатками, обработка заказов.</div></div>
-      <div class="resp-item"><div class="resp-icon" style="background:var(--grn-p)">📊</div><div class="resp-text"><strong>Продвижение на площадке.</strong> Платная реклама внутри маркетплейса — за счёт партнёра. Сбор отзывов, работа с рейтингом карточек.</div></div>
-      <div class="resp-item"><div class="resp-icon" style="background:var(--grn-p)">🚚</div><div class="resp-text"><strong>Логистика последней мили.</strong> Доставка, возвраты, управление складом на территории страны.</div></div>
-      <div class="resp-item"><div class="resp-icon" style="background:var(--grn-p)">🤝</div><div class="resp-text"><strong>Знание рынка.</strong> Экспертиза по локальной специфике, поведению покупателей, конкурентному окружению на площадке.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- 09 ГОСУДАРСТВЕННАЯ ПОДДЕРЖКА -->
-<div class="section">
-  <div class="section-label">09 · Государственная поддержка экспорта</div>
-  <div class="section-title">Три инструмента<br><em>одновременно</em></div>
-  <div class="support-grid">
-    <div class="support-card">
-      <h4>РЭЦ</h4><div class="support-org">Российский экспортный центр · Федеральный</div>
-      <ul>
-        <li>Доступен из любого региона России</li><li>Субсидирование логистики и сертификации</li>
-        <li>Маркетинговые исследования — бесплатно для МСП</li>
-        <li>Поддержал экспорт в KZ на 103 млрд ₽ за 2025 г.</li>
-        <li>Косметика — в списке приоритетных отраслей</li>
-        <li>Старт: myexport.exportcenter.ru</li>
-      </ul>
-    </div>
-    <div class="support-card">
-      <h4>ЦПЭ Бурятии</h4><div class="support-org">По юрлицу · Центр поддержки экспорта РБ</div>
-      <ul>
-        <li>Поиск и верификация иностранных покупателей</li><li>Маркетинговые исследования целевых рынков</li>
-        <li>Размещение на международных торговых площадках</li>
-        <li>Перевод коммерческих материалов</li>
-        <li>156 предпринимателей, $50 млн контрактов</li>
-        <li>KZ и KG — в действующей географии</li>
-      </ul>
-    </div>
-    <div class="support-card">
-      <h4>ЦПЭ Челябинска</h4><div class="support-org">По производству · Челябинская область</div>
-      <ul>
-        <li>Доступен по производственной площадке</li><li>ВЭД-связи со 114 странами</li>
-        <li>Акцент 2025–2026 годов — страны СНГ</li>
-        <li>Использовать параллельно с ЦПЭ Бурятии</li>
-        <li>Максимизирует поддержку без доп. затрат</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- 10 КОНКУРЕНТНОЕ ПОЗИЦИОНИРОВАНИЕ -->
-<div class="section">
-  <div class="section-label">10 · Конкурентное позиционирование</div>
-  <div class="section-title">Незанятая <em>ниша</em><br>на всех рынках</div>
-  <div class="comp-grid">
-    <div class="comp-card"><div class="comp-flag">🇰🇿</div><h4>Казахстан</h4>
-      <div class="comp-row"><div class="comp-row-label">Не конкурируем</div><div class="comp-row-text">KZ-локальные (Bioton lux, Wonder LAB), российские MLM (Faberlic, Avon)</div></div>
-      <div class="comp-row"><div class="comp-row-label">Отбираем долю у</div><div class="comp-row-text">K-beauty (COSRX, Medi-Peel), премиум-дистрибьюторы</div></div>
-      <div class="comp-row"><div class="comp-row-label">Наша ниша</div><div class="comp-row-text highlight">Трендовый декор с понятным визуалом, ценовой коридор 370–1 030 ₽</div></div>
-    </div>
-    <div class="comp-card"><div class="comp-flag">🇺🇿</div><h4>Узбекистан</h4>
-      <div class="comp-row"><div class="comp-row-label">Не конкурируем</div><div class="comp-row-text">M Cosmetic (Stellary), Golden Rose, Maybelline — масс</div></div>
-      <div class="comp-row"><div class="comp-row-label">Отбираем долю у</div><div class="comp-row-text">K-beauty, дермокосметика, Telegram-D2C «только оригинал»</div></div>
-      <div class="comp-row"><div class="comp-row-label">Наша ниша</div><div class="comp-row-text highlight">Яркие оттенки + гарантия оригинала, 700–1 500 ₽ на маркетплейсе</div></div>
-    </div>
-    <div class="comp-card"><div class="comp-flag">🇧🇾</div><h4>Беларусь</h4>
-      <div class="comp-row"><div class="comp-row-label">Не конкурируем</div><div class="comp-row-text">Белита-Витекс, Markell, Modum — масс, цена+привычка</div></div>
-      <div class="comp-row"><div class="comp-row-label">Отбираем долю у</div><div class="comp-row-text">K-beauty, L'Oréal / Garnier в среднем+ сегменте</div></div>
-      <div class="comp-row"><div class="comp-row-label">Наша ниша</div><div class="comp-row-text highlight">Трендовый декор в сегменте 500–2 100 ₽, куда Белита не дотягивается</div></div>
-    </div>
-  </div>
-  <div class="note" style="margin-top:24px">
-    <strong>Главное преимущество на старте</strong> — перенос готовой рейтинговой массы с WB РФ (до 11 000+ отзывов на флагманских SKU). На рынках, где доверие строится через отзывы, это даёт фору в 6–12 месяцев перед любым конкурентом, стартующим с нуля.
-  </div>
-</div>
-
-</div><!-- /page -->
-
-<div class="footer">
-  <div class="footer-logo">ecomake</div>
-  <div class="footer-meta">Конфиденциально · Для внутреннего использования<br>Стратегия выхода на рынки СНГ · Июнь 2026</div>
-</div>
-
-</body>
-</html>
+</body></html>
