@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Уход — ECOMAKE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["'TT Commons Pro'", 'Manrope', 'Inter', 'sans-serif'],
+      },
+      colors: {
+        brand: {
+          text: '#1a1614',
+          bg: '#ffffff',
+          card: '#f8f7f5',
+          muted: '#c8c4bc',
+          ozon: '#005BFF',
+          wb: '#CB11AB',
+          ym: '#FC3F1D',
+        }
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { font-family: 'TT Commons Pro', 'Manrope', 'Inter', sans-serif; }
+  body { color: #1a1614; background: #ffffff; }
+
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid #e8e5e0;
+    padding: 8px 0;
+    min-width: 140px;
+    z-index: 100;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 8px 20px;
+    font-size: 13px;
+    color: #1a1614;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .nav-dropdown-menu a:hover { background: #f8f7f5; }
+
+  .buy-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+    opacity: 0;
+  }
+  .buy-panel.open {
+    max-height: 60px;
+    opacity: 1;
+  }
+
+  .product-card { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .product-card.visible { opacity: 1; transform: translateY(0); }
+
+  .card-img-wrap { transition: transform 0.35s ease; }
+  .product-card:hover .card-img-wrap { transform: scale(1.02); }
+
+  .buy-btn-main {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1.5px solid #1a1614;
+    padding-bottom: 1px;
+    cursor: pointer;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: #1a1614;
+  }
+  .buy-btn-main:hover { color: #c8c4bc; border-color: #c8c4bc; }
+
+  .market-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .market-btn:hover { opacity: 0.85; }
+
+  .breadcrumb a { text-decoration: none; color: #c8c4bc; }
+  .breadcrumb a:hover { color: #1a1614; }
+  .breadcrumb span { color: #1a1614; }
+</style>
+</head>
+<body class="bg-white">
+
+<header class="border-b border-[#e8e5e0] sticky top-0 bg-white z-50">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="index.html" class="text-[#1a1614]">
+      <svg viewBox="0 0 220 44" height="24" xmlns="http://www.w3.org/2000/svg">
+        <text x="2" y="34" font-family="'TT Commons Pro','Manrope',sans-serif" font-weight="800" font-size="36" fill="currentColor" letter-spacing="-0.5">ecomake</text>
+      </svg>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8">
+      <div class="nav-dropdown">
+        <a href="#" class="text-[11px] font-700 tracking-[0.1em] uppercase text-[#1a1614] font-bold">Каталог</a>
+        <div class="nav-dropdown-menu">
+          <a href="ukhod.html">Уход</a>
+          <a href="#">Мейкап</a>
+        </div>
+      </div>
+      <a href="#" class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614]">О бренде</a>
+      <a href="#" class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614]">Купить</a>
+    </nav>
+
+    <button class="md:hidden text-[#1a1614]" aria-label="Меню">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+        <rect y="0" width="22" height="2" fill="currentColor"/>
+        <rect y="7" width="22" height="2" fill="currentColor"/>
+        <rect y="14" width="22" height="2" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="max-w-6xl mx-auto px-6 py-3">
+  <p class="breadcrumb text-[11px] tracking-[0.06em] uppercase">
+    <a href="index.html">Главная</a>
+    <span class="mx-2 text-[#c8c4bc]">/</span>
+    <a href="#">Каталог</a>
+    <span class="mx-2 text-[#c8c4bc]">/</span>
+    <span>Уход</span>
+  </p>
+</div>
+
+<main class="max-w-6xl mx-auto px-6 pb-24">
+  <div class="pt-10 pb-8">
+    <h1 class="text-[11px] font-bold tracking-[0.18em] uppercase text-[#1a1614] mb-2">Уход</h1>
+    <p class="text-[11px] tracking-[0.06em] uppercase text-[#c8c4bc]">12 продуктов</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10" id="product-grid">
+
+    <div class="product-card" data-delay="0">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_пенка_новая.png" alt="Пенка для умывания" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Пенка для умывания</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Мягкое очищение</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="1">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_злаковая_пудра_поправила.png" alt="Злаковая пудра для умывания" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Злаковая пудра для умывания</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Деликатный скраб</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="2">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_тоник.png" alt="Тоник для лица" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Тоник для лица</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Увлажнение и очищение</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="3">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_сыворотка_поправила.png" alt="Сыворотка увлажняющая" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Сыворотка увлажняющая</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Растительные пептиды</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="4">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_крем_для_сухой_кожи_поправила.png" alt="Крем увлажняющий для сухой кожи" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Крем увлажняющий для сухой кожи</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Глубокое увлажнение</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="5">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_крем_анти-акне.png" alt="Ночной крем Анти-акне" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Ночной крем Анти-акне</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Для проблемной кожи</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="6">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_спрей_для_тела_поправила.png" alt="Лосьон для тела" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Лосьон для тела</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Увлажняющий</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="7">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_sos_поправила.png" alt="Крем для рук" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Крем для рук</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">COC увлажняющий</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="8">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_гуаша_поправила.png" alt="Гуаша ледяная" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Гуаша ледяная</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Массажер</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="9">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_бальзамы_поправила.png" alt="Бальзам для ногтей" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Бальзам для ногтей</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Уход за кутикулой</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="10">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_крем_для_сухой_кожи_поправила.png" alt="Крем для ног" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Крем для ног</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">С мочевиной</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-delay="11">
+      <div class="overflow-hidden bg-[#f8f7f5]" style="aspect-ratio:1/1;">
+        <div class="card-img-wrap w-full h-full">
+          <img src="assets/img/prod_праймер_поправила.png" alt="Праймер-пудра минеральная" class="w-full h-full object-contain">
+        </div>
+      </div>
+      <div class="mt-3">
+        <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] leading-tight">Праймер-пудра минеральная</p>
+        <p class="text-[11px] tracking-[0.04em] text-[#c8c4bc] mt-0.5 mb-3">Прозрачная</p>
+        <button class="buy-btn-main" onclick="toggleBuy(this)">Купить</button>
+        <div class="buy-panel mt-2 flex gap-2">
+          <a href="#" class="market-btn" style="background:#005BFF;">Ozon</a>
+          <a href="#" class="market-btn" style="background:#CB11AB;">WB</a>
+          <a href="#" class="market-btn" style="background:#FC3F1D;">ЯМ</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="border-t border-[#e8e5e0] py-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="index.html" class="text-[#1a1614]">
+        <svg viewBox="0 0 220 44" height="20" xmlns="http://www.w3.org/2000/svg">
+          <text x="2" y="34" font-family="'TT Commons Pro','Manrope',sans-serif" font-weight="800" font-size="36" fill="currentColor" letter-spacing="-0.5">ecomake</text>
+        </svg>
+      </a>
+      <nav class="flex flex-wrap items-center justify-center gap-6">
+        <a href="#" class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] hover:text-[#c8c4bc] transition-colors">Каталог</a>
+        <a href="#" class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] hover:text-[#c8c4bc] transition-colors">О бренде</a>
+        <a href="#" class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] hover:text-[#c8c4bc] transition-colors">Купить</a>
+        <a href="#" class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] hover:text-[#c8c4bc] transition-colors">VK</a>
+        <a href="#" class="text-[11px] font-bold tracking-[0.1em] uppercase text-[#1a1614] hover:text-[#c8c4bc] transition-colors">Telegram</a>
+      </nav>
+    </div>
+    <p class="text-center text-[10px] tracking-[0.06em] text-[#c8c4bc] mt-8 uppercase">&copy; 2026 ECOMAKE. Все права защищены.</p>
+  </div>
+</footer>
+
+<script>
+function toggleBuy(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.buy-panel.open').forEach(function(p) {
+    p.classList.remove('open');
+    p.previousElementSibling.textContent = 'Купить';
+  });
+  if (!isOpen) {
+    panel.classList.add('open');
+    btn.textContent = 'Закрыть';
+  }
+}
+
+(function() {
+  var cards = document.querySelectorAll('.product-card');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var delay = parseInt(el.getAttribute('data-delay') || '0', 10) % 3;
+        setTimeout(function() {
+          el.classList.add('visible');
+        }, delay * 80);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  cards.forEach(function(card) { observer.observe(card); });
+})();
+</script>
+</body>
+</html>

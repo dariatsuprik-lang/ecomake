@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ecomake — интеллектуальная косметика</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['TT Commons Pro','Manrope','Inter','system-ui','sans-serif'] },
+        colors: {
+          brand: { warm: '#c8c4bc', muted: '#8f857a', dark: '#1a1614', light: '#f8f7f5' }
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { -webkit-font-smoothing: antialiased; }
+  body { font-family: 'TT Commons Pro','Manrope','Inter',sans-serif; }
+
+  /* ── REVEAL ON SCROLL ── */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease,transform .7s ease; }
+  .reveal.in { opacity:1; transform:translateY(0); }
+  .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+  .d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+
+  /* ── HERO CAROUSEL ── */
+  .carousel-slide { position:absolute; inset:0; opacity:0; transition:opacity .9s ease; }
+  .carousel-slide.active { opacity:1; }
+  .carousel-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.4); transition:all .3s ease; cursor:pointer; }
+  .carousel-dot.active { background:#fff; width:20px; border-radius:3px; }
+
+  /* ── NAV UNDERLINE ── */
+  .nav-link { position:relative; }
+  .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#1a1614; transition:width .3s ease; }
+  .nav-link:hover::after { width:100%; }
+
+  /* ── PRODUCT CARD ── */
+  .prod-img-wrap { overflow:hidden; }
+  .prod-img-wrap img { transition:transform .65s cubic-bezier(.25,.46,.45,.94); }
+  .prod-card:hover .prod-img-wrap img { transform:scale(1.05); }
+
+  /* ── BUY EXPAND ── */
+  .buy-expand { max-height:0; overflow:hidden; transition:max-height .4s ease; }
+  .buy-expand.open { max-height:120px; }
+
+  /* ── CAT TILE ── */
+  .cat-tile .cat-img { transition:transform .75s cubic-bezier(.25,.46,.45,.94); }
+  .cat-tile:hover .cat-img { transform:scale(1.04); }
+
+  /* ── UNDERLINE LINK ── */
+  .ul-link { position:relative; display:inline-block; }
+  .ul-link::after { content:''; position:absolute; bottom:-1px; left:0; width:100%; height:1px; background:currentColor; transform:scaleX(1); transition:transform .3s ease; transform-origin:left; }
+  .ul-link:hover::after { transform:scaleX(0); transform-origin:right; }
+
+  /* ── MARQUEE (removed but keeping class for possible reuse) ── */
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+</style>
+</head>
+<body class="bg-white text-[#1a1614]">
+
+<!-- ═══════ HEADER ═══════ -->
+<header id="hdr" class="fixed top-0 left-0 right-0 z-50 bg-white/96 backdrop-blur-md border-b border-[#e8e4df] transition-shadow duration-300">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
+
+    <!-- LOGO SVG -->
+    <a href="index.html" class="flex items-center">
+      <svg viewBox="0 0 230 42" height="22" xmlns="http://www.w3.org/2000/svg" aria-label="ecomake">
+        <text x="0" y="34" font-family="'TT Commons Pro','Manrope',sans-serif" font-weight="800" font-size="38" fill="#1a1614" letter-spacing="-1">ecomake</text>
+      </svg>
+    </a>
+
+    <!-- NAV desktop -->
+    <nav class="hidden md:flex items-center gap-8">
+      <div class="relative group">
+        <button class="nav-link text-[11px] font-700 tracking-[.12em] uppercase text-[#555] hover:text-[#1a1614] transition-colors pb-0.5">Каталог</button>
+        <div class="absolute top-full left-1/2 -translate-x-1/2 mt-3 bg-white border border-[#e8e4df] rounded-sm shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200 w-36 py-2">
+          <a href="ukhod.html" class="block px-4 py-2 text-[11px] font-600 tracking-[.1em] uppercase text-[#555] hover:text-[#1a1614] hover:bg-[#f8f7f5] transition-colors">Уход</a>
+          <a href="makeup.html" class="block px-4 py-2 text-[11px] font-600 tracking-[.1em] uppercase text-[#555] hover:text-[#1a1614] hover:bg-[#f8f7f5] transition-colors">Мейкап</a>
+        </div>
+      </div>
+      <a href="#about" class="nav-link text-[11px] font-700 tracking-[.12em] uppercase text-[#555] hover:text-[#1a1614] transition-colors">О бренде</a>
+      <a href="#buy" class="nav-link text-[11px] font-700 tracking-[.12em] uppercase text-[#555] hover:text-[#1a1614] transition-colors">Купить</a>
+    </nav>
+
+    <!-- burger -->
+    <button id="brg" onclick="document.getElementById('mob').classList.toggle('hidden')" class="md:hidden flex flex-col gap-[5px] p-1">
+      <span class="w-5 h-px bg-[#1a1614] block"></span>
+      <span class="w-5 h-px bg-[#1a1614] block"></span>
+      <span class="w-3.5 h-px bg-[#1a1614] block"></span>
+    </button>
+  </div>
+
+  <!-- mobile menu -->
+  <div id="mob" class="hidden border-t border-[#e8e4df] bg-white px-6 py-4 flex flex-col gap-4">
+    <a href="ukhod.html" class="text-[11px] font-700 tracking-[.12em] uppercase text-[#555]">Уход</a>
+    <a href="makeup.html" class="text-[11px] font-700 tracking-[.12em] uppercase text-[#555]">Мейкап</a>
+    <a href="#about" class="text-[11px] font-700 tracking-[.12em] uppercase text-[#555]">О бренде</a>
+    <a href="#buy" class="text-[11px] font-700 tracking-[.12em] uppercase text-[#555]">Купить</a>
+  </div>
+</header>
+
+<!-- ═══════ HERO CAROUSEL ═══════ -->
+<section class="pt-14 relative" style="height:100vh; min-height:560px;">
+  <div id="carousel" class="relative w-full h-full overflow-hidden">
+
+    <div class="carousel-slide active">
+      <img src="assets/img/banner_1080х450_1.jpg" class="w-full h-full object-cover" alt="">
+    </div>
+    <div class="carousel-slide">
+      <img src="assets/img/banner_1080х450_2.jpg" class="w-full h-full object-cover" alt="">
+    </div>
+    <div class="carousel-slide">
+      <img src="assets/img/banner_1080х450_3.jpg" class="w-full h-full object-cover" alt="">
+    </div>
+    <div class="carousel-slide">
+      <img src="assets/img/banner_1080х450_4.jpg" class="w-full h-full object-cover" alt="">
+    </div>
+    <div class="carousel-slide">
+      <img src="assets/img/banner_1080х450_5.jpg" class="w-full h-full object-cover" alt="">
+    </div>
+
+    <!-- dots -->
+    <div class="absolute bottom-6 left-0 right-0 flex justify-center items-center gap-2 z-10">
+      <button class="carousel-dot active" onclick="goTo(0)"></button>
+      <button class="carousel-dot" onclick="goTo(1)"></button>
+      <button class="carousel-dot" onclick="goTo(2)"></button>
+      <button class="carousel-dot" onclick="goTo(3)"></button>
+      <button class="carousel-dot" onclick="goTo(4)"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HITS ═══════ -->
+<section class="py-20 px-6 md:px-12 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-baseline justify-between mb-10 reveal">
+      <h2 class="text-[11px] font-800 tracking-[.16em] uppercase">Хиты</h2>
+      <div class="flex gap-6">
+        <a href="ukhod.html" class="ul-link text-[10px] font-600 tracking-[.1em] uppercase text-[#888]">Уход</a>
+        <a href="makeup.html" class="ul-link text-[10px] font-600 tracking-[.1em] uppercase text-[#888]">Мейкап</a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
+
+      <!-- BB крем -->
+      <div class="prod-card reveal d1">
+        <div class="prod-img-wrap bg-[#f8f7f5] mb-3" style="aspect-ratio:1/1;">
+          <img src="assets/img/prod_бб_флюид_попрвила.png" alt="BB-крем" class="w-full h-full object-contain">
+        </div>
+        <p class="text-[10px] font-800 tracking-[.08em] uppercase mb-0.5">BB-крем тональный</p>
+        <p class="text-[10px] text-[#888] mb-2">Увлажняющий флюид</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+      <!-- Пудра -->
+      <div class="prod-card reveal d2">
+        <div class="prod-img-wrap bg-[#f8f7f5] mb-3" style="aspect-ratio:1/1;">
+          <img src="assets/img/prod_пудра_тон_01_поправила.png" alt="Пудра" class="w-full h-full object-contain">
+        </div>
+        <p class="text-[10px] font-800 tracking-[.08em] uppercase mb-0.5">Пудра минеральная</p>
+        <p class="text-[10px] text-[#888] mb-2">Матирующая рассыпчатая</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+      <!-- Румяна -->
+      <div class="prod-card reveal d3">
+        <div class="prod-img-wrap bg-[#f8f7f5] mb-3" style="aspect-ratio:1/1;">
+          <img src="assets/img/prod_румяна_сухие_поправила.png" alt="Румяна" class="w-full h-full object-contain">
+        </div>
+        <p class="text-[10px] font-800 tracking-[.08em] uppercase mb-0.5">Румяна минеральные</p>
+        <p class="text-[10px] text-[#888] mb-2">Рассыпчатые</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+      <!-- Бронзер -->
+      <div class="prod-card reveal d4">
+        <div class="prod-img-wrap bg-[#f8f7f5] mb-3" style="aspect-ratio:1/1;">
+          <img src="assets/img/prod_бронзер_поправила.png" alt="Бронзер" class="w-full h-full object-contain">
+        </div>
+        <p class="text-[10px] font-800 tracking-[.08em] uppercase mb-0.5">Бронзер</p>
+        <p class="text-[10px] text-[#888] mb-2">«Поцелуй солнца»</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+      <!-- Сыворотка -->
+      <div class="prod-card reveal d5">
+        <div class="prod-img-wrap bg-[#f8f7f5] mb-3" style="aspect-ratio:1/1;">
+          <img src="assets/img/prod_сыворотка_поправила.png" alt="Сыворотка" class="w-full h-full object-contain">
+        </div>
+        <p class="text-[10px] font-800 tracking-[.08em] uppercase mb-0.5">Сыворотка</p>
+        <p class="text-[10px] text-[#888] mb-2">Увлажняющая</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+      <!-- Пенка -->
+      <div class="prod-card reveal d6">
+        <div class="prod-img-wrap bg-[#f8f7f5] mb-3" style="aspect-ratio:1/1;">
+          <img src="assets/img/prod_пенка_новая.png" alt="Пенка" class="w-full h-full object-contain">
+        </div>
+        <p class="text-[10px] font-800 tracking-[.08em] uppercase mb-0.5">Пенка для умывания</p>
+        <p class="text-[10px] text-[#888] mb-2">Увлажняющая</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CATALOG SPLIT ═══════ -->
+<section class="px-6 md:px-12 pb-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-baseline justify-between mb-6 reveal">
+      <h2 class="text-[11px] font-800 tracking-[.16em] uppercase">Каталог</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <!-- УХОД -->
+      <a href="ukhod.html" class="cat-tile group relative overflow-hidden block" style="aspect-ratio:4/3; background:#eeecea;">
+        <img src="assets/img/prod_крем_для_сухой_кожи_поправила.png" alt="Уход"
+             class="cat-img w-full h-full object-contain transition-all duration-700 p-10 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8">
+          <p class="text-white/60 text-[9px] font-700 tracking-[.18em] uppercase mb-1.5">01</p>
+          <h3 class="text-white font-900 uppercase leading-none mb-1" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:.04em;">Уход</h3>
+          <p class="text-white/60 text-[10px] tracking-wider mb-3">Лицо · Тело · Руки</p>
+          <span class="text-white text-[10px] font-700 tracking-[.14em] uppercase border-b border-white/50 pb-0.5 group-hover:border-white transition-colors">Смотреть →</span>
+        </div>
+      </a>
+
+      <!-- МЕЙКАП -->
+      <a href="makeup.html" class="cat-tile group relative overflow-hidden block" style="aspect-ratio:4/3; background:#ede9e7;">
+        <img src="assets/img/prod_пудра_тон_01_поправила.png" alt="Мейкап"
+             class="cat-img w-full h-full object-contain transition-all duration-700 p-10 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8">
+          <p class="text-white/60 text-[9px] font-700 tracking-[.18em] uppercase mb-1.5">02</p>
+          <h3 class="text-white font-900 uppercase leading-none mb-1" style="font-size:clamp(2rem,4vw,3rem);letter-spacing:.04em;">Мейкап</h3>
+          <p class="text-white/60 text-[10px] tracking-wider mb-3">Лицо · Глаза · Губы · Брови</p>
+          <span class="text-white text-[10px] font-700 tracking-[.14em] uppercase border-b border-white/50 pb-0.5 group-hover:border-white transition-colors">Смотреть →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about" class="py-24 px-6 md:px-12">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+
+    <div class="order-2 md:order-1">
+      <p class="text-[9px] font-800 tracking-[.2em] uppercase text-[#aaa] mb-6 reveal">О бренде</p>
+      <h2 class="font-900 uppercase leading-[1.05] mb-6 reveal" style="font-size:clamp(2rem,5vw,3.5rem);letter-spacing:.03em;">
+        Роскошь<br>быть собой
+      </h2>
+      <p class="text-sm text-[#666] leading-relaxed mb-4 reveal d1">
+        Ecomake — это интеллектуальная косметика для тех, кто выбирает себя. Умные формулы с адаптивными текстурами, которые работают как уход и макияж одновременно.
+      </p>
+      <p class="text-sm text-[#666] leading-relaxed mb-8 reveal d2">
+        Бережно поддерживают микробиом кожи, восстанавливают её естественный баланс и позволяют чувствовать себя уверенно — без фильтров.
+      </p>
+      <a href="#buy" class="ul-link text-[10px] font-700 tracking-[.16em] uppercase reveal d3">Купить →</a>
+    </div>
+
+    <div class="order-1 md:order-2 reveal d2">
+      <div class="overflow-hidden" style="aspect-ratio:4/5; background:#f0ece6;">
+        <img src="assets/img/prod_мини_трио_поправила.png" alt="Мини-набор мейкап"
+             class="w-full h-full object-contain p-8 transition-transform duration-700 hover:scale-[1.04]">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ PILLARS ═══════ -->
+<section class="border-y border-[#e8e4df]">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-[#e8e4df]">
+
+    <div class="p-8 md:p-10 reveal d1 group hover:bg-[#f8f7f5] transition-colors duration-300">
+      <div class="mb-4">
+        <!-- Flask / ingredients icon -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 4V14L4 22h20L18 14V4" stroke="#1a1614" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 4h12" stroke="#1a1614" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="10" cy="19" r="1.5" fill="#c8c4bc"/>
+          <circle cx="16" cy="21" r="1" fill="#c8c4bc"/>
+        </svg>
+      </div>
+      <p class="text-[10px] font-800 tracking-[.1em] uppercase mb-2">Честный состав</p>
+      <p class="text-[11px] text-[#888] leading-relaxed">Минимум ингредиентов — максимум результата. Без лишнего.</p>
+    </div>
+
+    <div class="p-8 md:p-10 reveal d2 group hover:bg-[#f8f7f5] transition-colors duration-300">
+      <div class="mb-4">
+        <!-- Location / Russia icon -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 3C10.13 3 7 6.13 7 10c0 5.25 7 15 7 15s7-9.75 7-15c0-3.87-3.13-7-7-7z" stroke="#1a1614" stroke-width="1.5"/>
+          <circle cx="14" cy="10" r="2.5" stroke="#1a1614" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <p class="text-[10px] font-800 tracking-[.1em] uppercase mb-2">Сделано в России</p>
+      <p class="text-[11px] text-[#888] leading-relaxed">Собственная лаборатория на Урале. Производство в Челябинске.</p>
+    </div>
+
+    <div class="p-8 md:p-10 reveal d3 group hover:bg-[#f8f7f5] transition-colors duration-300">
+      <div class="mb-4">
+        <!-- Leaf / cruelty-free icon -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 23c0 0 2-10 8-13 4-2 10-2 10-2s0 6-2 10c-2 4-8 6-8 6" stroke="#1a1614" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5 23l6-7" stroke="#1a1614" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="text-[10px] font-800 tracking-[.1em] uppercase mb-2">Cruelty-free</p>
+      <p class="text-[11px] text-[#888] leading-relaxed">Не тестируется на животных. Тесты in vitro.</p>
+    </div>
+
+    <div class="p-8 md:p-10 reveal d4 group hover:bg-[#f8f7f5] transition-colors duration-300">
+      <div class="mb-4">
+        <!-- Drop / skin-first icon -->
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 4C14 4 7 12 7 17a7 7 0 0014 0c0-5-7-13-7-13z" stroke="#1a1614" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10.5 19a3.5 3.5 0 003.5 2" stroke="#c8c4bc" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="text-[10px] font-800 tracking-[.1em] uppercase mb-2">Скин-ферст</p>
+      <p class="text-[11px] text-[#888] leading-relaxed">Уход и макияж в одной формуле. Поддерживает микробиом кожи.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ НОВИНКИ ═══════ -->
+<section class="py-20 px-6 md:px-12 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-baseline justify-between mb-10 reveal">
+      <h2 class="text-[11px] font-800 tracking-[.16em] uppercase">Новинки</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+      <div class="prod-card reveal d1 group">
+        <div class="prod-img-wrap bg-[#f0ece6] mb-4 relative" style="aspect-ratio:1/1;">
+          <img src="assets/img/prod_карандаши_для_губ_поправила.png" alt="Карандаш" class="w-full h-full object-contain p-6">
+          <span class="absolute top-3 left-3 text-[9px] font-800 tracking-[.1em] uppercase bg-[#1a1614] text-white px-2 py-1">NEW</span>
+        </div>
+        <p class="text-[11px] font-800 tracking-[.08em] uppercase mb-1">Карандаш для бровей</p>
+        <p class="text-[11px] text-[#888] mb-3">Выдвижной, стойкий</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+      <div class="prod-card reveal d2 group">
+        <div class="prod-img-wrap bg-[#f0ece6] mb-4 relative" style="aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+          <span class="text-[10px] text-[#bbb] tracking-[.1em] uppercase">фото скоро</span>
+          <span class="absolute top-3 left-3 text-[9px] font-800 tracking-[.1em] uppercase bg-[#1a1614] text-white px-2 py-1">NEW</span>
+        </div>
+        <p class="text-[11px] font-800 tracking-[.08em] uppercase mb-1">Тушь для ресниц</p>
+        <p class="text-[11px] text-[#888] mb-3">Объём и разделение</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+      <div class="prod-card reveal d3 group">
+        <div class="prod-img-wrap bg-[#f0ece6] mb-4 relative" style="aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+          <span class="text-[10px] text-[#bbb] tracking-[.1em] uppercase">фото скоро</span>
+          <span class="absolute top-3 left-3 text-[9px] font-800 tracking-[.1em] uppercase bg-[#1a1614] text-white px-2 py-1">NEW</span>
+        </div>
+        <p class="text-[11px] font-800 tracking-[.08em] uppercase mb-1">Масло для губ</p>
+        <p class="text-[11px] text-[#888] mb-3">Lip oil, блеск + уход</p>
+        <button onclick="toggleBuy(this)" class="text-[10px] font-700 tracking-[.1em] uppercase underline">Купить</button>
+        <div class="buy-expand mt-2 flex flex-col gap-1.5">
+          <a href="https://www.ozon.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#005BFF;">Ozon</a>
+          <a href="https://www.wildberries.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#CB11AB;">Wildberries</a>
+          <a href="https://market.yandex.ru" target="_blank" class="text-[10px] font-700 tracking-[.08em] uppercase px-3 py-1.5 rounded-sm text-white text-center" style="background:#FC3F1D;">Яндекс.Маркет</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MEDIA ═══════ -->
+<section class="py-14 px-6 border-t border-[#e8e4df]">
+  <div class="max-w-7xl mx-auto text-center">
+    <p class="text-[9px] font-800 tracking-[.2em] uppercase text-[#bbb] mb-8 reveal">О нас пишут</p>
+    <div class="flex items-center justify-center gap-12 reveal d1">
+      <span class="text-sm font-700 tracking-[.1em] uppercase text-[#aaa] hover:text-[#666] transition-colors cursor-default">ТВ Пятница</span>
+      <span class="w-px h-4 bg-[#ddd]"></span>
+      <span class="text-sm font-700 tracking-[.1em] uppercase text-[#aaa] hover:text-[#666] transition-colors cursor-default">Сколково</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WHERE TO BUY ═══════ -->
+<section id="buy" class="py-24 px-6 md:px-12 bg-[#f8f7f5] border-t border-[#e8e4df]">
+  <div class="max-w-2xl mx-auto text-center">
+    <p class="text-[9px] font-800 tracking-[.2em] uppercase text-[#bbb] mb-4 reveal">Доступно на маркетплейсах</p>
+    <h2 class="font-900 uppercase leading-tight mb-12 reveal" style="font-size:clamp(2rem,5vw,3.2rem);letter-spacing:.04em;">Купить</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+
+      <a href="https://www.ozon.ru" target="_blank"
+         class="flex flex-col items-center py-10 px-6 bg-white border border-[#e8e4df] hover:border-[#005BFF] hover:shadow-lg transition-all duration-300 reveal d1">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4 text-white font-900 text-base" style="background:#005BFF;">O</div>
+        <p class="text-[11px] font-800 tracking-[.1em] uppercase mb-1">Ozon</p>
+        <p class="text-[10px] text-[#aaa] mb-4">Доставка по всей России</p>
+        <span class="text-[10px] font-700 tracking-[.12em] uppercase ul-link" style="color:#005BFF;">Перейти →</span>
+      </a>
+
+      <a href="https://www.wildberries.ru" target="_blank"
+         class="flex flex-col items-center py-10 px-6 bg-white border border-[#e8e4df] hover:border-[#CB11AB] hover:shadow-lg transition-all duration-300 reveal d2">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4 text-white font-900 text-base" style="background:#CB11AB;">W</div>
+        <p class="text-[11px] font-800 tracking-[.1em] uppercase mb-1">Wildberries</p>
+        <p class="text-[10px] text-[#aaa] mb-4">Доставка по всей России</p>
+        <span class="text-[10px] font-700 tracking-[.12em] uppercase ul-link" style="color:#CB11AB;">Перейти →</span>
+      </a>
+
+      <a href="https://market.yandex.ru" target="_blank"
+         class="flex flex-col items-center py-10 px-6 bg-white border border-[#e8e4df] hover:border-[#FC3F1D] hover:shadow-lg transition-all duration-300 reveal d3">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center mb-4 text-white font-900 text-base" style="background:#FC3F1D;">Я</div>
+        <p class="text-[11px] font-800 tracking-[.1em] uppercase mb-1">Яндекс.Маркет</p>
+        <p class="text-[10px] text-[#aaa] mb-4">Доставка по всей России</p>
+        <span class="text-[10px] font-700 tracking-[.12em] uppercase ul-link" style="color:#FC3F1D;">Перейти →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="bg-[#1a1614] text-white py-12 px-6 md:px-12">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+
+    <a href="index.html">
+      <svg viewBox="0 0 230 42" height="20" xmlns="http://www.w3.org/2000/svg" aria-label="ecomake">
+        <text x="0" y="34" font-family="'TT Commons Pro','Manrope',sans-serif" font-weight="800" font-size="38" fill="white" letter-spacing="-1">ecomake</text>
+      </svg>
+    </a>
+
+    <div class="flex flex-wrap gap-6 text-[10px] font-600 tracking-[.12em] uppercase text-[#666]">
+      <a href="ukhod.html" class="hover:text-white transition-colors">Уход</a>
+      <a href="makeup.html" class="hover:text-white transition-colors">Мейкап</a>
+      <a href="#about" class="hover:text-white transition-colors">О бренде</a>
+      <a href="#buy" class="hover:text-white transition-colors">Купить</a>
+      <a href="https://vk.com/ecomake" target="_blank" class="hover:text-white transition-colors">VK</a>
+      <a href="https://t.me/ecomakecosmetic" target="_blank" class="hover:text-white transition-colors">Telegram</a>
+    </div>
+
+  </div>
+  <div class="max-w-7xl mx-auto border-t border-[#2a2420] mt-8 pt-6 flex flex-col md:flex-row justify-between gap-2">
+    <p class="text-[10px] text-[#444]">© 2026 ecomake. Все права защищены.</p>
+    <p class="text-[10px] text-[#444]">ИП Варфоломеева Анастасия Александровна · Челябинск</p>
+  </div>
+</footer>
+
+<script>
+// ── CAROUSEL ──
+let current = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const dots   = document.querySelectorAll('.carousel-dot');
+let timer;
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = n;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+
+function next() { goTo((current + 1) % slides.length); }
+
+function startTimer() { timer = setInterval(next, 5000); }
+function stopTimer()  { clearInterval(timer); }
+
+startTimer();
+document.getElementById('carousel').addEventListener('mouseenter', stopTimer);
+document.getElementById('carousel').addEventListener('mouseleave', startTimer);
+
+// ── BUY TOGGLE ──
+function toggleBuy(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = panel.classList.contains('open');
+  // close all
+  document.querySelectorAll('.buy-expand.open').forEach(p => p.classList.remove('open'));
+  document.querySelectorAll('button[onclick]').forEach(b => { if(b !== btn) b.textContent = 'Купить'; });
+  if (!isOpen) {
+    panel.classList.add('open');
+    btn.textContent = 'Закрыть';
+  } else {
+    btn.textContent = 'Купить';
+  }
+}
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── HEADER SHADOW ──
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  hdr.style.boxShadow = window.scrollY > 8 ? '0 1px 12px rgba(0,0,0,.08)' : 'none';
+});
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
