@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///Users/apple/Downloads/cosmetics-tracker-index_1.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Трекер запуска новинки</title>
+<link href="./Трекер запуска новинки ECOMAKE _files/css2" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:#F7F4F0;color:#1A1410;min-height:100vh}
+.app{display:flex;flex-direction:column;min-height:100vh}
+
+/* TOPBAR */
+.topbar{background:#7A4E3E;padding:0 1.5rem;display:flex;align-items:center;gap:1rem;height:54px;flex-shrink:0}
+.logo{color:#fff;font-size:15px;font-weight:600}
+.logo span{opacity:.6;font-weight:400;font-size:13px;margin-left:8px}
+.tprog{display:flex;align-items:center;gap:8px;margin-left:auto}
+.tprog-bar{width:100px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden}
+.tprog-fill{height:100%;border-radius:2px;background:#fff;transition:width .3s}
+.tprog-lbl{color:rgba(255,255,255,.85);font-size:12px;min-width:28px}
+
+/* LAYOUT */
+.body{display:flex;flex:1;overflow:hidden}
+
+/* SIDEBAR */
+.sidebar{width:210px;flex-shrink:0;background:#fff;border-right:1px solid #E8E0D8;overflow-y:auto}
+.sidebar-hdr{font-size:10px;font-weight:600;color:#9E9188;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px 8px}
+.pbtn{width:100%;text-align:left;padding:9px 16px;border:none;background:none;cursor:pointer;display:flex;align-items:center;gap:9px;transition:background .1s}
+.pbtn:hover{background:#F7F4F0}
+.pbtn.active{background:#FEF3E8;border-left:3px solid #C8956C}
+.pbtn.active .pnum{background:#C8956C;color:#fff}
+.pnum{width:22px;height:22px;border-radius:50%;background:#F0EBE4;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#7A5040;flex-shrink:0}
+.pinfo{flex:1;min-width:0}
+.pname{font-size:12.5px;font-weight:500;color:#1A1410;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdays{font-size:11px;color:#9E9188;margin-top:1px}
+.ppct{font-size:11px;color:#9E9188;flex-shrink:0}
+.pminibar{height:2px;margin:0 16px 6px;border-radius:1px;background:#EDE8E0;overflow:hidden}
+.pminifill{height:100%;background:#4E9462;transition:width .3s}
+
+/* CONTENT */
+.content{flex:1;overflow-y:auto;padding:1.5rem}
+
+/* PHASE HEADER */
+.ph{margin-bottom:1.25rem}
+.ph-top{display:flex;align-items:baseline;flex-wrap:wrap;gap:.75rem;margin-bottom:.5rem}
+.ph-title{font-size:20px;font-weight:600}
+.ph-badge{font-size:12px;color:#7A5040;background:#FEF3E8;border:1px solid #E8C8A8;padding:3px 10px;border-radius:100px}
+.ph-desc{font-size:13px;color:#6B5F52;line-height:1.6;margin-bottom:.75rem}
+.team-lbl{font-size:10px;font-weight:600;color:#9E9188;text-transform:uppercase;letter-spacing:.7px;margin-bottom:.4rem}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.875rem}
+.chip{font-size:12px;padding:3px 10px;border-radius:100px;border:1px solid #E0D8CF;color:#6B5F52}
+.chip.lead{background:#FEF3E8;border-color:#C8956C;color:#7A4E3E;font-weight:500}
+.phbar-row{display:flex;align-items:center;gap:.75rem}
+.phbar{flex:1;height:5px;border-radius:3px;background:#E8E0D8;overflow:hidden}
+.phfill{height:100%;border-radius:3px;background:#4E9462;transition:width .3s}
+.phlbl{font-size:12.5px;color:#6B5F52;font-weight:500;min-width:36px;text-align:right}
+
+/* BLOCKS */
+.block{background:#fff;border:1px solid #E8E0D8;border-radius:10px;margin-bottom:.75rem;overflow:hidden}
+.bhdr{padding:11px 15px;display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;transition:background .1s}
+.bhdr:hover{background:#FAFAF8}
+.bdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.bname{font-size:13.5px;font-weight:500;flex:1}
+.bcnt{font-size:12px;color:#9E9188}
+.bchev{font-size:18px;color:#9E9188;transition:transform .2s;line-height:1}
+.bchev.open{transform:rotate(180deg)}
+
+/* TASKS */
+.bbody{border-top:1px solid #EDE8E0}
+.task{padding:10px 15px;border-bottom:1px solid #F0EBE4}
+.task:last-child{border-bottom:none}
+.tmain{display:flex;align-items:flex-start;gap:9px}
+.cb{width:18px;height:18px;border-radius:4px;border:1.5px solid #CCC4BC;cursor:pointer;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;background:#fff;transition:all .15s}
+.cb:hover{border-color:#C8956C}
+.cb.done{background:#4E9462;border-color:#4E9462}
+.cb.done::after{content:'';display:block;width:9px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(0,-1px)}
+.tbody{flex:1;min-width:0}
+.ttext{font-size:13px;color:#1A1410;line-height:1.5}
+.ttext.done{text-decoration:line-through;color:#9E9188}
+.tdetail{font-size:11.5px;color:#9E9188;margin-top:3px;line-height:1.55}
+.tfooter{margin-top:7px;margin-left:27px}
+.cbtn{font-size:12px;color:#9E9188;background:none;border:none;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:4px;transition:color .1s}
+.cbtn:hover{color:#1A1410}
+.cbtn.has{color:#C8956C}
+.cwrap{margin-top:6px}
+.cwrap textarea{width:100%;font-size:12px;padding:7px 10px;border:1px solid #E0D8CF;border-radius:6px;background:#FAFAF8;color:#1A1410;resize:vertical;font-family:inherit;min-height:56px;line-height:1.5;transition:border .15s}
+.cwrap textarea:focus{outline:none;border-color:#C8956C;background:#fff}
+
+/* STATS */
+.statsbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:1rem 1.5rem;background:#fff;border-top:1px solid #E8E0D8;flex-shrink:0}
+.stat{background:#F7F4F0;border-radius:8px;padding:10px 14px}
+.snum{font-size:22px;font-weight:600;color:#1A1410}
+.slbl{font-size:11px;color:#9E9188;margin-top:1px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:#4E9462;color:#fff;font-size:13px;padding:8px 16px;border-radius:6px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:999}
+.toast.show{opacity:1}
+
+@media(max-width:620px){
+  .sidebar{display:none}
+  .statsbar{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="logo">🚀 Трекер запуска новинки<span>Косметика · Китай → Россия</span></div>
+    <div class="tprog">
+      <div class="tprog-bar"><div class="tprog-fill" id="tfill" style="width: 0%;"></div></div>
+      <div class="tprog-lbl" id="tpct">0%</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="sidebar">
+      <div class="sidebar-hdr">Этапы проекта</div>
+      <div id="sidebar"><button class="pbtn" onclick="go(0)"><div class="pnum">1</div><div class="pinfo"><div class="pname">Аналитика и концепт</div><div class="pdays">Дни 1–13</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(1)"><div class="pnum">2</div><div class="pinfo"><div class="pname">Поставщик и договор</div><div class="pdays">Дни 11–47</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(2)"><div class="pnum">3</div><div class="pinfo"><div class="pname">Дизайн упаковки</div><div class="pdays">Дни 37–66</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(3)"><div class="pnum">4</div><div class="pinfo"><div class="pname">Технология и образцы</div><div class="pdays">Дни 44–78</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(4)"><div class="pnum">5</div><div class="pinfo"><div class="pname">Сертификация</div><div class="pdays">Дни 44–108</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(5)"><div class="pnum">6</div><div class="pinfo"><div class="pname">Производство и QC</div><div class="pdays">Дни 78–128</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(6)"><div class="pnum">7</div><div class="pinfo"><div class="pname">Контент для МП</div><div class="pdays">Дни 100–130</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn" onclick="go(7)"><div class="pnum">8</div><div class="pinfo"><div class="pname">Логистика и таможня</div><div class="pdays">Дни 116–163</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div><button class="pbtn active" onclick="go(8)"><div class="pnum">9</div><div class="pinfo"><div class="pname">Финансы и запуск</div><div class="pdays">Дни 100+</div></div><div class="ppct">0%</div></button><div class="pminibar"><div class="pminifill" style="width:0%"></div></div></div>
+    </div>
+    <div class="content" id="content"><div class="ph"><div class="ph-top"><div class="ph-title">Этап 9. Финансы и запуск</div><div class="ph-badge">Дни 100+</div></div><div class="ph-desc">Финальный расчёт экономики, бюджет маркетинга, размещение на маркетплейсах, старт продаж и мониторинг результатов.</div><div class="team-lbl">Участники этапа</div><div class="chips"><span class="chip lead">Руководитель продуктовой разработки</span><span class="chip">Продакт-менеджер</span><span class="chip">Финансовый менеджер</span><span class="chip">Маркетолог МП</span><span class="chip">Менеджер МП</span></div><div class="phbar-row"><div class="phbar"><div class="phfill" style="width:0%"></div></div><div class="phlbl">0/14</div></div></div><div class="block"><div class="bhdr" onclick="toggleB(&#39;b_fin&#39;)"><div class="bdot" style="background:#B89A30"></div><div class="bname">Финансовое планирование</div><div class="bcnt">0/5</div><div class="bchev open">⌄</div></div><div class="bbody"><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t93&#39;)"></div><div class="tbody"><div class="ttext">Финальный расчёт Unit-экономики (реальные цифры)</div><div class="tdetail">Landed cost + комиссии МП + логистика МП + % выкупа</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t93&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t94&#39;)"></div><div class="tbody"><div class="ttext">Проверка: маржа ≥ 25% — иначе пересматриваем цену</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t94&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t95&#39;)"></div><div class="tbody"><div class="ttext">Рассчитать бюджет маркетинга на старт</div><div class="tdetail">Выкупы 50–100 шт. + отзывы 30 шт. + реклама МП</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t95&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t96&#39;)"></div><div class="tbody"><div class="ttext">Платёжный календарь + точка безубыточности</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t96&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t97&#39;)"></div><div class="tbody"><div class="ttext">Резервный бюджет +15% на непредвиденные расходы</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t97&#39;)">💬 добавить комментарий</button></div></div></div></div><div class="block"><div class="bhdr" onclick="toggleB(&#39;b_mp&#39;)"><div class="bdot" style="background:#C06090"></div><div class="bname">Размещение на маркетплейсах</div><div class="bcnt">0/4</div><div class="bchev open">⌄</div></div><div class="bbody"><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t98&#39;)"></div><div class="tbody"><div class="ttext">Создать карточки товара Ozon + Wildberries</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t98&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t99&#39;)"></div><div class="tbody"><div class="ttext">Загрузить контент, характеристики, EAN-13, DataMatrix</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t99&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t100&#39;)"></div><div class="tbody"><div class="ttext">Загрузить декларацию соответствия / СГР в ЛК МП</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t100&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t101&#39;)"></div><div class="tbody"><div class="ttext">Подключить FBS, загрузить остатки на собственном складе</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t101&#39;)">💬 добавить комментарий</button></div></div></div></div><div class="block"><div class="bhdr" onclick="toggleB(&#39;b_launch&#39;)"><div class="bdot" style="background:#4E9462"></div><div class="bname">Старт продаж</div><div class="bcnt">0/5</div><div class="bchev open">⌄</div></div><div class="bbody"><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t102&#39;)"></div><div class="tbody"><div class="ttext">Запустить внутреннюю рекламу МП в первый день продаж</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t102&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t103&#39;)"></div><div class="tbody"><div class="ttext">Организовать выкупы 50–100 шт. для подъёма рейтинга</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t103&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t104&#39;)"></div><div class="tbody"><div class="ttext">Запустить посевы в Telegram beauty-каналах + инфлюенсеры</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t104&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t105&#39;)"></div><div class="tbody"><div class="ttext">Мониторинг 28 дней: продажи, конверсия, ДРР, отзывы</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t105&#39;)">💬 добавить комментарий</button></div></div><div class="task"><div class="tmain"><div class="cb" onclick="toggleT(&#39;t106&#39;)"></div><div class="tbody"><div class="ttext">Решение: масштабировать → FBO или корректировать продукт</div></div></div><div class="tfooter"><button class="cbtn" onclick="toggleC(&#39;t106&#39;)">💬 добавить комментарий</button></div></div></div></div></div>
+  </div>
+  <div class="statsbar" id="statsbar"><div class="stat"><div class="snum">9</div><div class="slbl">этапов</div></div><div class="stat"><div class="snum">106</div><div class="slbl">задач всего</div></div><div class="stat"><div class="snum">0</div><div class="slbl">выполнено</div></div><div class="stat"><div class="snum">0%</div><div class="slbl">прогресс</div></div></div>
+</div>
+<div class="toast" id="toast">✓ Сохранено</div>
+
+<script>
+var PHASES = [
+{id:"p1",label:"Аналитика и концепт",days:"Дни 1–13",
+ team:["Руководитель продуктовой разработки","Продакт-менеджер","Аналитик"],
+ desc:"Исследование рынка, выбор ниши и продуктового концепта, предварительный расчёт Unit-экономики.",
+ blocks:[
+  {id:"b_an",label:"Аналитика рынка",color:"#E8A04A",tasks:[
+    {id:"t1",text:"Анализ категории на МП — MPStats, Moneyplace, SellerFox",detail:"Объём ниши, топ-запросы, сезонность, ценовые кластеры на Ozon и WB"},
+    {id:"t2",text:"Выгрузка ТОП-100 SKU ниши и анализ бестселлеров",detail:"Продажи, отзывы, фото, состав, claims конкурентов"},
+    {id:"t3",text:"Тренды: Google Trends, TikTok, Pinterest, international beauty reports"},
+    {id:"t4",text:"Анализ ТОП-20 конкурентов по выбранной нише",detail:"Цена, состав, упаковка, claims, болевые точки в негативных отзывах"},
+    {id:"t5",text:"Решение: входим / не входим — зафиксировать и согласовать"}
+  ]},
+  {id:"b_con",label:"Концепт продукта",color:"#5B8DB8",tasks:[
+    {id:"t6",text:"Заполнить Product Brief",detail:"УТП, ЦА, ценовой сегмент, форм-фактор, базовый состав, позиционирование"},
+    {id:"t7",text:"Определить ценовой сегмент и предполагаемую цену продажи"},
+    {id:"t8",text:"Предварительный прогноз объёма продаж (шт/мес)"}
+  ]},
+  {id:"b_eco1",label:"Предварительная Unit-экономика",color:"#B89A30",tasks:[
+    {id:"t9",text:"Прогноз цены продажи, комиссий МП (15–25%), логистики"},
+    {id:"t10",text:"Предварительная себестоимость: FOB ориент. + таможня + фрахт"},
+    {id:"t11",text:"Проверка: маржа ≥ 25–30% — если нет, корректируем концепт"}
+  ]}
+ ]
+},
+{id:"p2",label:"Поставщик и договор",days:"Дни 11–47",
+ team:["Руководитель продуктовой разработки","Менеджер по закупкам","Юрист"],
+ desc:"Поиск и выбор китайского ODM-производителя, получение первичных образцов, подписание договора и предоплата.",
+ blocks:[
+  {id:"b_sup",label:"Поиск поставщика",color:"#5B8DB8",tasks:[
+    {id:"t12",text:"Составить шорт-лист 3–5 заводов",detail:"Alibaba, 1688, Canton Fair, рекомендации агентов"},
+    {id:"t13",text:"Проверить сертификаты: GMPC / ISO 22716 / SGS"},
+    {id:"t14",text:"Запросить каталог готовых ODM-формул + NDA"},
+    {id:"t15",text:"Отправить RFQ / Product Requirement Sheet каждому заводу",detail:"Цена FOB, MOQ, сроки, варианты формул и упаковки"}
+  ]},
+  {id:"b_samp",label:"Первичные образцы (ODM)",color:"#4E9462",tasks:[
+    {id:"t16",text:"Получить образцы готовых формул от заводов (DHL, 5–7 дней)"},
+    {id:"t17",text:"Оценить образцы: текстура, запах, цвет, нанесение",detail:"Заполнить scoring sheet по каждому образцу и заводу"},
+    {id:"t18",text:"Выбрать финальную формулу и форм-фактор"},
+    {id:"t19",text:"Выбрать финального поставщика"}
+  ]},
+  {id:"b_deal",label:"Договор и предоплата",color:"#8A7050",tasks:[
+    {id:"t20",text:"Подготовить и подписать контракт с заводом (EN + RU перевод)",detail:"Состав/формула, MOQ, сроки, штрафы, конфиденциальность, права на формулу"},
+    {id:"t21",text:"Внести предоплату 30–50% по инвойсу",detail:"Зафиксировать курс CNY/RUB"},
+    {id:"t22",text:"Получить подтверждение старта работ от завода"}
+  ]}
+ ]
+},
+{id:"p3",label:"Дизайн упаковки",days:"Дни 37–66",
+ team:["Руководитель продуктовой разработки","Дизайнер","Продакт-менеджер","Юрист"],
+ desc:"Разработка дизайна этикетки и коробки, регистрация штрихкодов, проверка ТМ, согласование PPS с заводом.",
+ blocks:[
+  {id:"b_prep",label:"Подготовка к дизайну",color:"#9B6CB8",tasks:[
+    {id:"t23",text:"Получить выкройки (dielines) всей упаковки от завода (AI/PDF)",detail:"Первичная (тюбик/банка/флакон) + вторичная (коробка)"},
+    {id:"t24",text:"Зарегистрировать EAN-13 штрихкод в GS1 Russia",detail:"Отдельный код на каждый SKU"},
+    {id:"t25",text:"Проверить статус ТМ в Роспатенте (ФИПС)",detail:"Если не зарегистрирована — подать заявку (~12 мес. срок)"}
+  ]},
+  {id:"b_design",label:"Разработка дизайна",color:"#9B6CB8",tasks:[
+    {id:"t26",text:"Написать бриф дизайнеру",detail:"Концепция, ЦА, стиль, палитра, обязательные элементы"},
+    {id:"t27",text:"Разработать 2–3 варианта дизайна этикетки и коробки"},
+    {id:"t28",text:"Проверить обязательные элементы по ТР ТС 009/2011",detail:"INCI, объём, срок годности, ЕАС, страна, импортёр, EAN-13"},
+    {id:"t29",text:"Согласовать финальный вариант дизайна с командой"}
+  ]},
+  {id:"b_pps",label:"PPS — предпроизводственный образец",color:"#C06090",tasks:[
+    {id:"t30",text:"Отправить print-ready макет заводу (CMYK, 300 dpi, bleed)"},
+    {id:"t31",text:"Получить и оценить PPS (цветопробу) от завода"},
+    {id:"t32",text:"Подписать Pre-press Approval",detail:"⚠️ Только после подписания PPS — запуск производства"}
+  ]}
+ ]
+},
+{id:"p4",label:"Технология и образцы",days:"Дни 44–78",
+ team:["Руководитель продуктовой разработки","Продакт-менеджер","Технолог"],
+ desc:"Кастомизация ODM-формулы, итерации образцов до утверждения Golden Sample как производственного стандарта.",
+ blocks:[
+  {id:"b_form",label:"Кастомизация формулы",color:"#4E9462",tasks:[
+    {id:"t33",text:"Передать ТЗ на кастомизацию: цвет, запах, текстура, упаковка",detail:"На основе выбранной ODM-формулы"},
+    {id:"t34",text:"Получить образец S1 после кастомизации (DHL, 5–7 дней)"},
+    {id:"t35",text:"Оценить S1 и отправить подробный фидбэк заводу",detail:"Текстура, запах, цвет, нанесение, упаковка"}
+  ]},
+  {id:"b_iter",label:"Итерации образцов",color:"#4E9462",tasks:[
+    {id:"t36",text:"Образец S2 — получить и оценить (если нужны правки)"},
+    {id:"t37",text:"Образец S3 — финальная итерация (при необходимости)"},
+    {id:"t38",text:"Зафиксировать все версии в Sample Log"}
+  ]},
+  {id:"b_gold",label:"Golden Sample",color:"#4E9462",tasks:[
+    {id:"t39",text:"Финальный образец соответствует всем требованиям"},
+    {id:"t40",text:"Подписать акт утверждения Golden Sample (с обеих сторон)"},
+    {id:"t41",text:"Эталон хранится у нас + у завода как QC-стандарт"}
+  ]}
+ ]
+},
+{id:"p5",label:"Сертификация",days:"Дни 44–108",
+ team:["Руководитель продуктовой разработки","Менеджер по сертификации","Юрист"],
+ desc:"Сбор документов от завода, выбор схемы по ТР ТС 009/2011, лабораторные испытания, регистрация декларации, Честный ЗНАК.",
+ blocks:[
+  {id:"b_docs",label:"Документы от производителя",color:"#C06060",tasks:[
+    {id:"t42",text:"Получить INCI-состав с % концентраций (полный)"},
+    {id:"t43",text:"Получить CoA — Certificate of Analysis"},
+    {id:"t44",text:"Получить GMP / ISO 22716 сертификат завода"},
+    {id:"t45",text:"Получить технологический регламент / спецификацию"}
+  ]},
+  {id:"b_scheme",label:"Схема и образцы для РФ",color:"#C06060",tasks:[
+    {id:"t46",text:"Определить схему: декларация ТР ТС 009/2011 или СГР",detail:"СГР — для детской косметики и средств интимной гигиены"},
+    {id:"t47",text:"Заказать образцы для сертификации (5–10 шт.)",detail:"Допустимо в нейтральной упаковке (прозрачные банки)"},
+    {id:"t48",text:"Официально ввезти образцы в РФ отдельным инвойсом",detail:"Или по договору с сертификационным органом"}
+  ]},
+  {id:"b_lab",label:"Испытания и декларация",color:"#C06060",tasks:[
+    {id:"t49",text:"Направить образцы в аккредитованную лабораторию",detail:"Тесты: микробиология, pH, тяжёлые металлы, стабильность"},
+    {id:"t50",text:"Получить Протокол испытаний (14–30 рабочих дней)"},
+    {id:"t51",text:"Зарегистрировать декларацию соответствия",detail:"Срок: 5–10 рабочих дней после протокола. На имя рос. импортёра."},
+    {id:"t52",text:"Добавить номер декларации на макет этикетки"}
+  ]},
+  {id:"b_znak",label:"Честный ЗНАК",color:"#3A9AAA",tasks:[
+    {id:"t53",text:"Зарегистрироваться на chestnyznak.ru (ГИС МТ)"},
+    {id:"t54",text:"Получить GTIN для каждого SKU (GS1 Russia)"},
+    {id:"t55",text:"Настроить эмиссию кодов DataMatrix"},
+    {id:"t56",text:"Согласовать нанесение DataMatrix — завод или РЦ в РФ"}
+  ]}
+ ]
+},
+{id:"p6",label:"Производство и QC",days:"Дни 78–128",
+ team:["Руководитель продуктовой разработки","Менеджер по закупкам","QC-менеджер"],
+ desc:"Запуск производства после утверждения Golden Sample и PPS, инспекция на заводе, получение отгрузочных документов.",
+ blocks:[
+  {id:"b_prod",label:"Запуск производства",color:"#3A9AAA",tasks:[
+    {id:"t57",text:"Запуск только при: ✅ Golden Sample  ✅ PPS  ✅ предоплата"},
+    {id:"t58",text:"Передать Production Order заводу",detail:"Состав, количество, упаковка, DataMatrix (если завод наносит)"},
+    {id:"t59",text:"Согласовать дату готовности к отгрузке (ETD)"}
+  ]},
+  {id:"b_qc",label:"Контроль качества",color:"#3A9AAA",tasks:[
+    {id:"t60",text:"Нанять инспектора QC (SGS / Bureau Veritas / агент)",detail:"За 3–5 дней до готовности партии"},
+    {id:"t61",text:"Провести Pre-shipment Inspection",detail:"Соответствие Golden Sample, упаковка, маркировка, DataMatrix, количество"},
+    {id:"t62",text:"Получить Inspection Report"},
+    {id:"t63",text:"При несоответствии — рекламация и переделка"}
+  ]},
+  {id:"b_shipdoc",label:"Отгрузочные документы",color:"#7A8C6E",tasks:[
+    {id:"t64",text:"Получить Commercial Invoice и Packing List"},
+    {id:"t65",text:"Получить Bill of Lading (B/L) или AWB"},
+    {id:"t66",text:"Получить Certificate of Origin (если нужен для льготных пошлин)"}
+  ]}
+ ]
+},
+{id:"p7",label:"Контент для МП",days:"Дни 100–130",
+ team:["Руководитель продуктовой разработки","Дизайнер","Маркетолог","Копирайтер","SMM-менеджер"],
+ desc:"Создание всего визуального и текстового контента для маркетплейсов и соцсетей. Стартуем с PPS-образцом параллельно с производством.",
+ blocks:[
+  {id:"b_render",label:"Рендер и фото продукта",color:"#C06090",tasks:[
+    {id:"t67",text:"3D-рендер упаковки (Midjourney / Blender / Packshot Studio)",detail:"Можно начинать с PPS-образцом не дожидаясь финальной партии"},
+    {id:"t68",text:"Lifestyle-фото: контекстная съёмка или нейро-генерация"},
+    {id:"t69",text:"Текстурный крупный план / before-after (если применимо)"}
+  ]},
+  {id:"b_card",label:"Карточки товара",color:"#C06090",tasks:[
+    {id:"t70",text:"Обложка (главное фото) — 2 варианта для A/B теста"},
+    {id:"t71",text:"Инфографика: состав, эффекты, УТП, применение — 5–7 слайдов"},
+    {id:"t72",text:"SEO-заголовок: ключи в первых 60 символах"},
+    {id:"t73",text:"Описание: bullet points + полное описание с ключами"},
+    {id:"t74",text:"Rich-контент / брендзона (при наличии подписки МП)"}
+  ]},
+  {id:"b_smm",label:"SMM-контент",color:"#C06090",tasks:[
+    {id:"t75",text:"Контент-план на первые 4 недели продаж"},
+    {id:"t76",text:"Рилсы / шортсы с демонстрацией продукта"},
+    {id:"t77",text:"Контент для посевов в Telegram beauty-каналах"},
+    {id:"t78",text:"UGC — привлечь 2–3 инфлюенсера для первых отзывов"}
+  ]}
+ ]
+},
+{id:"p8",label:"Логистика и таможня",days:"Дни 116–163",
+ team:["Руководитель продуктовой разработки","Менеджер по логистике","Таможенный брокер","Менеджер склада"],
+ desc:"Выбор маршрута, отгрузка с завода, постоплата, таможенное оформление, приёмка и ввод в оборот Честный ЗНАК.",
+ blocks:[
+  {id:"b_log",label:"Логистика",color:"#7A8C6E",tasks:[
+    {id:"t79",text:"Выбрать маршрут доставки",detail:"Авиа 7–14 дн., ж/д 18–25 дн., море 35–45 дн."},
+    {id:"t80",text:"Запросить ставки у 2–3 форвардеров"},
+    {id:"t81",text:"Оформить страховку груза (0.3–0.5% от стоимости)"},
+    {id:"t82",text:"Получить трекинг B/L / AWB после отгрузки"},
+    {id:"t83",text:"Постоплата 50–70% после получения B/L",detail:"Проверить: инвойс совпадает с фактическим грузом"}
+  ]},
+  {id:"b_customs",label:"Таможенное оформление",color:"#7A8C6E",tasks:[
+    {id:"t84",text:"Определить код ТН ВЭД (глава 33: 3304, 3305, 3307)"},
+    {id:"t85",text:"Подать таможенную декларацию (ДТ) через брокера"},
+    {id:"t86",text:"Оплатить пошлину (0–6.5% от FOB) + НДС 20%"},
+    {id:"t87",text:"Предоставить таможне декларацию соответствия / СГР",detail:"⚠️ Документ должен быть готов ДО прихода груза"},
+    {id:"t88",text:"Получить ТПО (таможенное подтверждение о выпуске)"}
+  ]},
+  {id:"b_wh",label:"Склад и Честный ЗНАК",color:"#7A8C6E",tasks:[
+    {id:"t89",text:"Приёмка груза — сверить с Packing List"},
+    {id:"t90",text:"Оформить приходную накладную в 1С"},
+    {id:"t91",text:"Проверить наличие DataMatrix на каждой единице"},
+    {id:"t92",text:"Ввод товара в оборот в системе Честный ЗНАК"}
+  ]}
+ ]
+},
+{id:"p9",label:"Финансы и запуск",days:"Дни 100+",
+ team:["Руководитель продуктовой разработки","Продакт-менеджер","Финансовый менеджер","Маркетолог МП","Менеджер МП"],
+ desc:"Финальный расчёт экономики, бюджет маркетинга, размещение на маркетплейсах, старт продаж и мониторинг результатов.",
+ blocks:[
+  {id:"b_fin",label:"Финансовое планирование",color:"#B89A30",tasks:[
+    {id:"t93",text:"Финальный расчёт Unit-экономики (реальные цифры)",detail:"Landed cost + комиссии МП + логистика МП + % выкупа"},
+    {id:"t94",text:"Проверка: маржа ≥ 25% — иначе пересматриваем цену"},
+    {id:"t95",text:"Рассчитать бюджет маркетинга на старт",detail:"Выкупы 50–100 шт. + отзывы 30 шт. + реклама МП"},
+    {id:"t96",text:"Платёжный календарь + точка безубыточности"},
+    {id:"t97",text:"Резервный бюджет +15% на непредвиденные расходы"}
+  ]},
+  {id:"b_mp",label:"Размещение на маркетплейсах",color:"#C06090",tasks:[
+    {id:"t98",text:"Создать карточки товара Ozon + Wildberries"},
+    {id:"t99",text:"Загрузить контент, характеристики, EAN-13, DataMatrix"},
+    {id:"t100",text:"Загрузить декларацию соответствия / СГР в ЛК МП"},
+    {id:"t101",text:"Подключить FBS, загрузить остатки на собственном складе"}
+  ]},
+  {id:"b_launch",label:"Старт продаж",color:"#4E9462",tasks:[
+    {id:"t102",text:"Запустить внутреннюю рекламу МП в первый день продаж"},
+    {id:"t103",text:"Организовать выкупы 50–100 шт. для подъёма рейтинга"},
+    {id:"t104",text:"Запустить посевы в Telegram beauty-каналах + инфлюенсеры"},
+    {id:"t105",text:"Мониторинг 28 дней: продажи, конверсия, ДРР, отзывы"},
+    {id:"t106",text:"Решение: масштабировать → FBO или корректировать продукт"}
+  ]}
+ ]
+}
+];
+
+var LS = 'ct_v3';
+var state = {};
+var openB = {};
+var cur = 0;
+
+try { state = JSON.parse(localStorage.getItem(LS) || '{}'); } catch(e){ state = {}; }
+PHASES.forEach(function(p){ p.blocks.forEach(function(b){ openB[b.id] = true; }); });
+
+function save(){
+  try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){}
+  var t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(function(){ t.classList.remove('show'); }, 1800);
+}
+
+function pStats(p){
+  var tot=0, don=0;
+  p.blocks.forEach(function(b){ b.tasks.forEach(function(t){ tot++; if(state[t.id]) don++; }); });
+  return {tot:tot, don:don};
+}
+function allStats(){
+  var tot=0, don=0;
+  PHASES.forEach(function(p){ var s=pStats(p); tot+=s.tot; don+=s.don; });
+  return {tot:tot, don:don};
+}
+
+function renderSidebar(){
+  var html = '';
+  PHASES.forEach(function(p, i){
+    var s = pStats(p);
+    var pct = s.tot ? Math.round(s.don/s.tot*100) : 0;
+    html += '<button class="pbtn'+(i===cur?' active':'')+'" onclick="go('+i+')">';
+    html += '<div class="pnum">'+(i+1)+'</div>';
+    html += '<div class="pinfo"><div class="pname">'+p.label+'</div><div class="pdays">'+p.days+'</div></div>';
+    html += '<div class="ppct">'+pct+'%</div></button>';
+    html += '<div class="pminibar"><div class="pminifill" style="width:'+pct+'%"></div></div>';
+  });
+  document.getElementById('sidebar').innerHTML = html;
+}
+
+function renderTop(){
+  var s = allStats();
+  var pct = s.tot ? Math.round(s.don/s.tot*100) : 0;
+  document.getElementById('tfill').style.width = pct+'%';
+  document.getElementById('tpct').textContent = pct+'%';
+}
+
+function renderStats(){
+  var s = allStats();
+  var pct = s.tot ? Math.round(s.don/s.tot*100) : 0;
+  document.getElementById('statsbar').innerHTML =
+    '<div class="stat"><div class="snum">'+PHASES.length+'</div><div class="slbl">этапов</div></div>'+
+    '<div class="stat"><div class="snum">'+s.tot+'</div><div class="slbl">задач всего</div></div>'+
+    '<div class="stat"><div class="snum">'+s.don+'</div><div class="slbl">выполнено</div></div>'+
+    '<div class="stat"><div class="snum">'+pct+'%</div><div class="slbl">прогресс</div></div>';
+}
+
+function renderContent(){
+  var p = PHASES[cur];
+  var s = pStats(p);
+  var pct = s.tot ? Math.round(s.don/s.tot*100) : 0;
+
+  var html = '<div class="ph">';
+  html += '<div class="ph-top"><div class="ph-title">Этап '+(cur+1)+'. '+p.label+'</div>';
+  html += '<div class="ph-badge">'+p.days+'</div></div>';
+  html += '<div class="ph-desc">'+p.desc+'</div>';
+  html += '<div class="team-lbl">Участники этапа</div>';
+  html += '<div class="chips">';
+  p.team.forEach(function(m, i){
+    html += '<span class="chip'+(i===0?' lead':'')+'">'+m+'</span>';
+  });
+  html += '</div>';
+  html += '<div class="phbar-row"><div class="phbar"><div class="phfill" style="width:'+pct+'%"></div></div>';
+  html += '<div class="phlbl">'+s.don+'/'+s.tot+'</div></div></div>';
+
+  p.blocks.forEach(function(b){
+    var bdone = b.tasks.filter(function(t){ return state[t.id]; }).length;
+    var isOpen = openB[b.id];
+    html += '<div class="block">';
+    html += '<div class="bhdr" onclick="toggleB(\''+b.id+'\')">';
+    html += '<div class="bdot" style="background:'+b.color+'"></div>';
+    html += '<div class="bname">'+b.label+'</div>';
+    html += '<div class="bcnt">'+bdone+'/'+b.tasks.length+'</div>';
+    html += '<div class="bchev'+(isOpen?' open':'')+'">&#8964;</div>';
+    html += '</div>';
+    if(isOpen){
+      html += '<div class="bbody">';
+      b.tasks.forEach(function(t){
+        var done = !!state[t.id];
+        var hasCom = !!(state['c_'+t.id]);
+        var showCom = !!state['oc_'+t.id];
+        html += '<div class="task">';
+        html += '<div class="tmain">';
+        html += '<div class="cb'+(done?' done':'')+'" onclick="toggleT(\''+t.id+'\')"></div>';
+        html += '<div class="tbody">';
+        html += '<div class="ttext'+(done?' done':'')+'">'+t.text+'</div>';
+        if(t.detail) html += '<div class="tdetail">'+t.detail+'</div>';
+        html += '</div></div>';
+        html += '<div class="tfooter">';
+        html += '<button class="cbtn'+(hasCom?' has':'')+'" onclick="toggleC(\''+t.id+'\')">&#128172; '+(hasCom?'комментарий':'добавить комментарий')+'</button>';
+        html += '</div>';
+        if(showCom || hasCom){
+          var cv = (state['c_'+t.id]||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          html += '<div class="cwrap"><textarea placeholder="Комментарий, статус, дата..." onchange="saveC(\''+t.id+'\',this.value)">'+cv+'</textarea></div>';
+        }
+        html += '</div>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+  });
+
+  document.getElementById('content').innerHTML = html;
+}
+
+function go(i){ cur=i; renderSidebar(); renderContent(); }
+function toggleB(id){ openB[id]=!openB[id]; renderContent(); }
+function toggleT(id){ state[id]=!state[id]; save(); renderSidebar(); renderTop(); renderStats(); renderContent(); }
+function toggleC(id){ state['oc_'+id]=!state['oc_'+id]; renderContent(); }
+function saveC(id,val){ state['c_'+id]=val; save(); renderSidebar(); renderContent(); }
+
+renderSidebar();
+renderTop();
+renderStats();
+renderContent();
+</script>
+
+
+</body></html>
